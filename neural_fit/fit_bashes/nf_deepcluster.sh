@@ -1,0 +1,12 @@
+python fit_neural_data.py \
+    --whichopt 1 --weight_decay 1e-3 \
+    --expId deepcluster_vgg16_all --gpu 0 \
+    --cacheDirName neural_fitting_inst \
+    --it_nodes conv[7:2:14],conv10,conv12 \
+    --v4_nodes conv[7:2:14],conv10,conv12 \
+    --batchsize 64 --loadport 27009 \
+    --tpu_flag 1 --fre_valid 160 --fre_metric 160 \
+    --rp_sub_mean 1 --div_std 1 \
+    --use_dataset_inter \
+    --deepcluster vgg16 \
+    --train_num_steps 30000

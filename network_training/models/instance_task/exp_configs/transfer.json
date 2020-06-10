@@ -1,0 +1,308 @@
+{
+    "instance_control": {
+        "save_exp": "instance_transfer/control/instance_control",
+        "load_exp": "instance_task/control/full",
+        "load_step": 2201980,
+
+        "port": 27009,
+        "cache_dir": "/data/azhai/tmp",
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        "fre_filter": 50045
+    },
+    "instance_denom": {
+        "save_exp": "instance_transfer/control/instance_denom",
+        "load_exp": "instance_task/control/compute_denom",
+        "load_step": 1701530,
+
+        "port": 27009,
+        "cache_dir": "/data/azhai/tmp",
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        "fre_filter": 50045
+    },
+    "kmeans220_classify": {
+        "save_exp": "instance_transfer/clustering/kmeans220_classify",
+        "load_exp": "instance_task/clustering/kmeans220_classify",
+        "load_step": 1100990,
+
+        "port": 27009,
+        "cache_dir": "/data/azhai/tmp",
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        "fre_filter": 50045
+    },
+    "classify_nn_clusters": {
+        "save_exp": "instance_transfer/clustering/classify_nn_clusters",
+        "load_exp": "instance_task/clustering/kmeans220_classify_nn_clusters",
+        "load_step": 1401260,
+
+        "port": 27009,
+        "cache_dir": "/data/azhai/tmp",
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        "fre_filter": 50045
+    },
+    "classify_nn_clusters_rd2": {
+        "save_exp": "instance_transfer/clustering/classify_nn_clusters_rd2",
+        "load_exp": "instance_task/clustering/classify_nn_clusters_rd2",
+        "load_step": 1501350,
+
+        "port": 27009,
+        "cache_dir": "/data/azhai/tmp",
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        "fre_filter": 50045
+    },
+    "dyn_km": {
+        "save_exp": "instance_transfer/dyn_clustering/dyn_km",
+        "load_exp": "instance_task/dynamic_clustering/dynamic_km_clusters",
+        "load_step": 2001800,
+        "port": 27009,
+        "lr_boundaries": "2452196,2812547",
+        "fre_filter": 50045,
+        "fre_cache_filter": 10009
+    },
+    "dyn_km_or": {
+        "save_exp": "instance_transfer/dyn_clustering/dyn_km_or",
+        "load_exp": "instance_task/dynamic_clustering/dynamic_km_mul_or",
+        "load_step": 1951755,
+        "port": 27009,
+        "lr_boundaries": "2301679,2612236",
+        "fre_filter": 50045,
+        "fre_cache_filter": 10009
+    },
+    "dyn_km_or_cv4cv5": {
+        "save_exp": "instance_transfer/dyn_clustering/dyn_km_or_cv4cv5",
+        "load_exp": "instance_task/dynamic_clustering/dynamic_km_mul_or",
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        "load_step": 1951755,
+        "port": 27009,
+        "get_all_layers": "6,8,9",
+        "lr_boundaries": "2301679,2612236",
+        "fre_filter": 50045,
+        "fre_cache_filter": 10009
+    },
+    "dyn_km_or_plc": {
+        "save_exp": "instance_transfer/dyn_clustering/dyn_km_or_plc",
+        "load_exp": "instance_task/dynamic_clustering/dynamic_km_mul_or",
+        "load_step": 1951755,
+        "port": 27009,
+        "lr_boundaries": "2301679,2612236",
+        "image_dir": "/mnt/fs1/Dataset/places/tfrs_205/",
+        "num_classes": 205,
+        "fre_filter": 50045,
+        "fre_cache_filter": 10009
+    },
+    "dyn_km_or_plc_esy": {
+        "save_exp": "instance_transfer/dyn_clustering/dyn_km_or_plc_esy",
+        "load_exp": "instance_task/dynamic_clustering/dynamic_km_mul_or",
+        "load_step": 1951755,
+        "port": 27009,
+        "lr_boundaries": "2301679,2612236",
+        "train_crop": "alexnet_crop_flip",
+        "image_dir": "/mnt/fs1/Dataset/places/tfrs_205/",
+        "num_classes": 205,
+        "fre_filter": 50045,
+        "fre_cache_filter": 10009
+    },
+    "dyn_km_or_fst": {
+        "save_exp": "instance_transfer/dyn_clustering/dyn_km_or_fst",
+        "load_exp": "instance_task/dynamic_clustering/dynamic_km_mul_or",
+        "load_step": 1951755,
+        "init_lr": 0.03,
+        "port": 27009,
+        "lr_boundaries": "2301679,2612236",
+        "fre_filter": 50045,
+        "fre_cache_filter": 10009
+    },
+    "dyn_km_or_no_col": {
+        "save_exp": "instance_transfer/dyn_clustering/dyn_km_or_no_col",
+        "load_exp": "instance_task/dynamic_clustering/dynamic_km_mul_or",
+        "load_step": 1951755,
+        "train_crop": "resnet_crop_flip",
+        "port": 27009,
+        "lr_boundaries": "2301679,2612236",
+        "fre_filter": 50045,
+        "fre_cache_filter": 10009
+    },
+    "dyn_km_alex": {
+        "save_exp": "instance_transfer/control/dyn_km_alex_2",
+        "load_exp": "instance_task/dynamic_clustering/dynamic_km_alexnet_bn",
+        "load_step": 1561404,
+        "model_type": "alexnet_bn_no_drop",
+        "get_all_layers": "default",
+        "train_crop": "alexnet_crop_flip",
+        "port": 27009,
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        "fre_filter": 50045,
+        "fre_cache_filter": 10009
+    },
+    "dyn_km_alex_cv5avg": {
+        "save_exp": "instance_transfer/control/dyn_km_alex_cv5avg2",
+        "load_exp": "instance_task/dynamic_clustering/dynamic_km_alexnet_bn",
+        "load_step": 1561404,
+        "model_type": "alexnet_bn_no_drop",
+        "get_all_layers": "conv5-avg",
+        "lr_boundaries": "1891860,2202200",
+        "port": 27009,
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        "fre_filter": 50045,
+        "fre_cache_filter": 10009
+    },
+    "dyn_km_alex_cv5avg_esy": {
+        "save_exp": "instance_transfer/control/dyn_km_alex_cv5avg_esy",
+        "load_exp": "instance_task/dynamic_clustering/dynamic_km_alexnet_bn",
+        "load_step": 1561404,
+        "model_type": "alexnet_bn_no_drop",
+        "get_all_layers": "conv5-avg",
+        "train_crop": "alexnet_crop_flip",
+        "lr_boundaries": "1891860,2202200",
+        "port": 27009,
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        "fre_filter": 50045,
+        "fre_cache_filter": 10009
+    },
+    "dyn_km_alex_cv5_esy": {
+        "save_exp": "instance_transfer/control/dyn_km_alex_cv5_esy",
+        "load_exp": "instance_task/dynamic_clustering/dynamic_km_alexnet_bn",
+        "load_step": 1561404,
+        "model_type": "alexnet_bn_no_drop",
+        "get_all_layers": "conv5",
+        "train_crop": "alexnet_crop_flip",
+        "lr_boundaries": "1891860,2002200",
+        "port": 27009,
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        "fre_filter": 50045,
+        "fre_cache_filter": 10009
+    },
+    "dyn_km_alex_cv5fc6": {
+        "save_exp": "instance_transfer/control/dyn_km_alex_cv5fc6_2",
+        "load_exp": "instance_task/dynamic_clustering/dynamic_km_alexnet_bn",
+        "load_step": 1561404,
+        "model_type": "alexnet_bn_no_drop",
+        "get_all_layers": "conv5,fc6",
+        "lr_boundaries": "1891860,2202200",
+        "port": 27009,
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        "fre_filter": 50045,
+        "fre_cache_filter": 10009
+    },
+    "dyn_km_alex_pl5_esy": {
+        "save_exp": "instance_transfer/control/dyn_km_alex_pl5_esy",
+        "load_exp": "instance_task/dynamic_clustering/dynamic_km_alexnet_bn",
+        "load_step": 1561404,
+        "model_type": "alexnet_bn_no_drop",
+        "get_all_layers": "pool5",
+        "train_crop": "alexnet_crop_flip",
+        "lr_boundaries": "1891860,2202200",
+        "port": 27009,
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        "fre_filter": 50045,
+        "fre_cache_filter": 10009
+    },
+    "dyn_km_alex_cv5pl5_vld": {
+        "save_exp": "instance_transfer/control/dyn_km_alex_cv5pl5_vld",
+        "load_exp": "instance_task/dynamic_clustering/dynamic_km_alexnet_bn",
+        "load_step": 1561404,
+        "model_type": "alexnet_bn_no_drop",
+        "get_all_layers": "conv5,pool5",
+        "train_crop": "validate_crop",
+        "lr_boundaries": "1891860,2002200",
+        "port": 27009,
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        "fre_filter": 50045,
+        "fre_cache_filter": 10009
+    },
+    "dyn_km_alex_cv5pl5_esy_swd": {
+        "save_exp": "instance_transfer/control/dyn_km_alex_cv5pl5_esy_swd",
+        "load_exp": "instance_task/dynamic_clustering/dynamic_km_alexnet_bn",
+        "load_step": 1561404,
+        "model_type": "alexnet_bn_no_drop",
+        "get_all_layers": "conv5,pool5",
+        "train_crop": "alexnet_crop_flip",
+        "lr_boundaries": "1891860,2002200",
+        "weight_decay": 5e-5,
+        "port": 27009,
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        "fre_filter": 50045,
+        "fre_cache_filter": 10009
+    },
+    "alx_cv5pl5_esy_eswd_ct": {
+        "save_exp": "instance_transfer/control/alx_cv5pl5_esy_eswd_ct_2",
+        "load_exp": "instance_transfer/control/dyn_km_alex_cv5pl5_esy_eswd",
+        "load_step": 1851665,
+        "model_type": "alexnet_bn_no_drop",
+        "get_all_layers": "conv5,pool5",
+        "train_crop": "alexnet_crop_flip",
+        "lr_boundaries": "2002000,2123200",
+        "weight_decay": 1e-5,
+        "port": 27009,
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        "fre_filter": 50045,
+        "fre_cache_filter": 10009
+    },
+    "alx_cv5pl5_esy_swd_bs256": {
+        "save_exp": "instance_transfer/control/alx_cv5pl5_esy_swd_bs256",
+        "load_exp": "instance_task/dynamic_clustering/dynamic_km_alexnet_bn",
+        "load_step": 1561404,
+        "model_type": "alexnet_bn_no_drop",
+        "get_all_layers": "conv5,pool5",
+        "train_crop": "alexnet_crop_flip",
+        "lr_boundaries": "1956797,2053200",
+        "weight_decay": 5e-5,
+        "port": 27009,
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        "batch_size": 256,
+        "fre_filter": 50040,
+        "fre_cache_filter": 5004
+    },
+    "dyn_km_alex_cv3cv4_esy_swd": {
+        "save_exp": "instance_transfer/control/dyn_km_alex_cv3cv4_esy_swd",
+        "load_exp": "instance_task/dynamic_clustering/dynamic_km_alexnet_bn",
+        "load_step": 1561404,
+        "model_type": "alexnet_bn_no_drop",
+        "get_all_layers": "conv3,conv4",
+        "train_crop": "alexnet_crop_flip",
+        "lr_boundaries": "1891860,2002200",
+        "weight_decay": 5e-5,
+        "port": 27009,
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        "fre_filter": 50045,
+        "fre_cache_filter": 10009
+    },
+    "dyn_km_alex_cv5pl5_esy_eswd": {
+        "save_exp": "instance_transfer/control/dyn_km_alex_cv5pl5_esy_eswd",
+        "load_exp": "instance_task/dynamic_clustering/dynamic_km_alexnet_bn",
+        "load_step": 1561404,
+        "model_type": "alexnet_bn_no_drop",
+        "get_all_layers": "conv5,pool5",
+        "train_crop": "alexnet_crop_flip",
+        "lr_boundaries": "1891860,2002200",
+        "weight_decay": 1e-5,
+        "port": 27009,
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        "fre_filter": 50045,
+        "fre_cache_filter": 10009
+    },
+    "dyn_km_alx_cv45pl5_plc": {
+        "save_exp": "instance_transfer/control/dyn_km_alx_cv45pl5_plc",
+        "load_exp": "instance_task/dynamic_clustering/dynamic_km_alexnet_bn",
+        "load_step": 1561404,
+        "model_type": "alexnet_bn_no_drop",
+        "get_all_layers": "conv4,conv5,pool5",
+        "train_crop": "alexnet_crop_flip",
+        "lr_boundaries": "1891860,2002200",
+        "weight_decay": 5e-5,
+        "port": 27009,
+        "image_dir": "/mnt/fs1/Dataset/places/tfrs_205/",
+        "num_classes": 205,
+        "fre_filter": 50045,
+        "fre_cache_filter": 10009
+    },
+    "dyn_nn_clusters": {
+        "save_exp": "instance_transfer/dyn_clustering/dyn_nn_clusters",
+        "load_exp": "instance_task/dynamic_clustering/dynamic_nn_clusters",
+        "load_step": 2001800,
+
+        "port": 27009,
+        "cache_dir": "/data/azhai/tmp",
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        "fre_filter": 50045
+    }
+}

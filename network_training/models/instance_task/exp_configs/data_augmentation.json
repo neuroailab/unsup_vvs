@@ -1,0 +1,58 @@
+{
+    // Settings hints:
+    //
+    // mongodb hosted here:
+    //   "host": "node11-neuroaicluster",
+    // need a cache_dir, e.g.:
+    //   "cache_dir": "/data/azhai/tmp",
+
+    // Just center crop, no data augmentation.
+    "center_crop": {
+        "exp_id": "center_crop",
+        "port": 27009,
+        "db_name": "instance_task",
+        "col_name": "data_augmentation",
+        "preprocess_func": "center_crop",
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/"
+    },
+
+    // Only do random cropping, no gray or color jitter
+    "resnet_crop_only": {
+        "exp_id": "resnet_crop_only",
+        "port": 27009,
+        "db_name": "instance_task",
+        "col_name": "data_augmentation",
+        "preprocess_func": "resnet_crop_only",
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/"
+    },
+
+    // All of resnet augmentation except random left/right flip
+    "resnet_noflip": {
+        "exp_id": "resnet_noflip",
+        "port": 27009,
+        "db_name": "instance_task",
+        "col_name": "data_augmentation",
+        "preprocess_func": "resnet_noflip",
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/"
+    },
+
+    // Only gray, color jitter, and left/right flip
+    "resnet_nocrop": {
+        "exp_id": "resnet_nocrop",
+        "port": 27009,
+        "db_name": "instance_task",
+        "col_name": "data_augmentation",
+        "preprocess_func": "resnet_nocrop",
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/"
+    },
+
+    // Same as standard resnet, but crop has to be at least 60% of area
+    "resnet_bigcrop": {
+        "exp_id": "resnet_bigcrop",
+        "port": 27009,
+        "db_name": "instance_task",
+        "col_name": "data_augmentation",
+        "preprocess_func": "resnet_bigcrop",
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/"
+    }
+}

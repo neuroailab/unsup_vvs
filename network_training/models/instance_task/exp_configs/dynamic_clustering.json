@@ -1,0 +1,443 @@
+{
+    // Control experiment on full ImageNet data, using AlexNet model
+    "dynamic_nn_alexnet": {
+        "exp_id": "dynamic_nn_alexnet",
+        // "host": "node11-neuroaicluster",
+        "port": 27009,
+        "db_name": "instance_task",
+        "col_name": "dynamic_clustering",
+        // "cache_dir": "/mnt/fs1/azhai/checkpoints",
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        "init_lr": 0.003,
+        "model_type": "alexnet",
+        "load_exp": "instance_task/control/alexnet2",
+        "load_step": 250225,
+        // save every 10 epochs
+        "fre_filter": 100090
+    },
+    // Use clusters formed by nearest-neighbors, updating every epoch
+    "dynamic_nn_clusters": {
+        "exp_id": "dynamic_nn_clusters",
+        "port": 27009,
+        "db_name": "instance_task",
+        "col_name": "dynamic_clustering",
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        "load_exp": "instance_task/control/full",
+        "load_step": 100090,
+        // save every 10 epochs
+        "fre_filter": 100090
+    },
+    "dynamic_nn_clusters_50": {
+        "exp_id": "dynamic_nn_clusters_50",
+        "port": 27009,
+        "db_name": "instance_task",
+        "col_name": "dynamic_clustering",
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        "load_exp": "instance_task/control/full50",
+        "load_step": 100090,
+        "lr_boundaries": "1500000,2059329",
+        // save every 10 epochs
+        "fre_filter": 10009,
+        "resnet_size": 50
+    },
+    // Training from scratch
+    "nn_clusters_scratch": {
+        "exp_id": "nn_clusters_scratch",
+        "port": 27009,
+        "db_name": "instance_task",
+        "col_name": "dynamic_clustering",
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        // save every 10 epochs
+        "fre_filter": 100090
+    },
+    // Control experiment on full ImageNet data, using AlexNet model
+    "dynamic_km_alexnet": {
+        "exp_id": "dynamic_km_alexnet2",
+        // "host": "node11-neuroaicluster",
+        "port": 27009,
+        "db_name": "instance_task",
+        "col_name": "dynamic_clustering",
+        // "cache_dir": "/mnt/fs1/azhai/checkpoints",
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        "init_lr": 0.003,
+        "ramp_up_epoch": 25,
+        "model_type": "alexnet",
+        "load_exp": "instance_task/control/alexnet2",
+        "load_step": 250225,
+        "cluster_method": "KM",
+        // save every 10 epochs
+        "fre_filter": 100090,
+        "fre_cache_filter": 10009
+    },
+    // Control experiment on full ImageNet data, using AlexNet model
+    "dynamic_km_alexnet_bn": {
+        "exp_id": "dynamic_km_alexnet_bn",
+        // "host": "node11-neuroaicluster",
+        "port": 27009,
+        "db_name": "instance_task",
+        "col_name": "dynamic_clustering",
+        // "cache_dir": "/mnt/fs1/azhai/checkpoints",
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        "init_lr": 0.03,
+        "model_type": "alexnet_bn_no_drop",
+        "load_exp": "instance_task/control/alexnet_bn",
+        "load_step": 100090,
+        "cluster_method": "KM",
+        "lr_boundaries": "1190000,1423100",
+        // save every 10 epochs
+        "fre_filter": 100090,
+        "fre_cache_filter": 10009
+    },
+    //AlexNet model, more Kmeans
+    "dynkm_alxbn_or": {
+        "exp_id": "dynkm_alxbn_or",
+        "port": 27009,
+        "db_name": "instance_task",
+        "col_name": "dynamic_clustering",
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        "init_lr": 0.03,
+        "model_type": "alexnet_bn_no_drop",
+        "load_exp": "instance_task/control/alexnet_bn",
+        "load_step": 100090,
+        "cluster_method": "KM",
+        "lr_boundaries": "1190000,1423100",
+        "multi_type": "or",
+        "kmeans_k": "10000,10000,10000",
+        "fre_filter": 100090,
+        "fre_cache_filter": 10009
+    },
+    //AlexNet model, more Kmeans
+    "dynkm_alxbn_or_sm": {
+        "exp_id": "dynkm_alxbn_or_sm",
+        "port": 27009,
+        "db_name": "instance_task",
+        "col_name": "dynamic_clustering",
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        "init_lr": 0.03,
+        "model_type": "alexnet_bn_no_drop",
+        "load_exp": "instance_task/control/alexnet_bn",
+        "load_step": 100090,
+        "cluster_method": "KM",
+        "lr_boundaries": "1190000,1423100",
+        "multi_type": "or",
+        "kmeans_k": "30000,30000,30000",
+        "fre_filter": 100090,
+        "fre_cache_filter": 10009
+    },
+    //AlexNet model, more Kmeans
+    "dynkm_alxbn_ormre": {
+        "exp_id": "dynkm_alxbn_ormre",
+        // "host": "node11-neuroaicluster",
+        "port": 27009,
+        "db_name": "instance_task",
+        "col_name": "dynamic_clustering",
+        // "cache_dir": "/mnt/fs1/azhai/checkpoints",
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        "init_lr": 0.03,
+        "model_type": "alexnet_bn_no_drop",
+        "load_exp": "instance_task/control/alexnet_bn",
+        "load_step": 100090,
+        "cluster_method": "KM",
+        "lr_boundaries": "1190000,1657596",
+        "multi_type": "or",
+        "kmeans_k": "10000,10000,10000,10000,10000,10000",
+        // save every 10 epochs
+        "fre_filter": 100090,
+        "fre_cache_filter": 10009
+    },
+    // Control experiment on full ImageNet data, using AlexNet model
+    "dyn_km_vggnet_bn_bs256": {
+        "exp_id": "dyn_km_vggnet_bn_bs256",
+        "port": 27009,
+        "db_name": "instance_task",
+        "col_name": "dynamic_clustering",
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        "init_lr": 0.03,
+        "model_type": "vggnet",
+        "load_exp": "instance_task/control/vggnet_bn",
+        "load_step": 100090,
+        "cluster_method": "KM",
+        "batch_size": 256,
+        "fre_filter": 50050,
+        "fre_cache_filter": 5005
+    },
+    // Control experiment on full ImageNet data, using AlexNet model
+    "dyn_km_vggnet_bn": {
+        "exp_id": "dyn_km_vggnet_bn",
+        "port": 27009,
+        "db_name": "instance_task",
+        "col_name": "dynamic_clustering",
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        "init_lr": 0.03,
+        "model_type": "vggnet",
+        "load_exp": "instance_task/control/vggnet_bn",
+        "load_step": 100090,
+        "cluster_method": "KM",
+        "fre_filter": 100090,
+        "fre_cache_filter": 10009
+    },
+    // Use clusters formed by KMeans, updating every epoch
+    "dynamic_km_clusters": {
+        "exp_id": "dynamic_km_clusters",
+        "port": 27009,
+        "db_name": "instance_task",
+        "col_name": "dynamic_clustering",
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        "load_exp": "instance_task/control/full",
+        "load_step": 100090,
+        // save every 10 epochs
+        "cluster_method": "KM",
+        "lr_boundaries": "1600000,1873411",
+        "fre_filter": 100090,
+        "fre_cache_filter": 10009
+    },
+    // Use clusters formed by KMeans, updating every epoch
+    "dynamic_km_update": {
+        "exp_id": "dynamic_km_update",
+        "port": 27009,
+        "db_name": "instance_task",
+        "col_name": "dynamic_clustering",
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        "load_exp": "instance_task/control/full",
+        "load_step": 100090,
+        "clstr_update_fre": 1000,
+        // save every 10 epochs
+        "cluster_method": "KM",
+        "lr_boundaries": "1600000,1873411",
+        "fre_filter": 100090,
+        "fre_cache_filter": 10009
+    },
+    // Use clusters formed by KMeans, updating every epoch
+    "dynamic_km_bigK": {
+        // "exp_id": "dynamic_km_bigK3", // instance_k is 0
+        "exp_id": "dynamic_km_bigK4",
+        "port": 27009,
+        "db_name": "instance_task",
+        "col_name": "dynamic_clustering",
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        "load_exp": "instance_task/control/full",
+        "load_step": 100090,
+        "instance_k": 8192,
+        // save every 10 epochs
+        "cluster_method": "KM",
+        "lr_boundaries": "1600000,1873411",
+        "fre_filter": 100090,
+        "fre_cache_filter": 10009
+    },
+    // Use clusters formed by KMeans, updating every epoch
+    "dynamic_km_smallK": {
+        // "exp_id": "dynamic_km_bigK3", // instance_k is 0
+        "exp_id": "dynamic_km_smallK",
+        "port": 27009,
+        "db_name": "instance_task",
+        "col_name": "dynamic_clustering",
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        "load_exp": "instance_task/control/full",
+        "load_step": 100090,
+        "instance_k": 2048,
+        // save every 10 epochs
+        "cluster_method": "KM",
+        "lr_boundaries": "1600000,1873411",
+        "fre_filter": 100090,
+        "fre_cache_filter": 10009
+    },
+    // Use clusters formed by KMeans, updating every epoch
+    "dynamic_km_clusters_50": {
+        "exp_id": "dynamic_km_clusters_50",
+        "port": 27009,
+        "db_name": "instance_task",
+        "col_name": "dynamic_clustering",
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        "load_exp": "instance_task/control/full50",
+        "load_step": 100090,
+        // save every 10 epochs
+        "cluster_method": "KM",
+        "lr_boundaries": "1522000,1895857",
+        "fre_filter": 10009,
+        "resnet_size": 50
+    },
+    // Use clusters formed by KMeans, updating every epoch
+    "dynamic_km_50_mre": {
+        "exp_id": "dynamic_km_50_mre",
+        "port": 27009,
+        "db_name": "instance_task",
+        "col_name": "dynamic_clustering",
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        "load_exp": "instance_task/control/full50",
+        "load_step": 100090,
+        // save every 10 epochs
+        "cluster_method": "KM",
+        "lr_boundaries": "1522000,1895857",
+        "multi_type": "or",
+        "kmeans_k": "10000,10000,10000,10000,10000,10000",
+        "fre_filter": 10009,
+        "resnet_size": 50
+    },
+    "dyn_km_50_mre10": {
+        "exp_id": "dyn_km_50_mre10",
+        "port": 27009,
+        "db_name": "instance_task",
+        "col_name": "dynamic_clustering",
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        "load_exp": "instance_task/control/full50",
+        "load_step": 100090,
+        "cluster_method": "KM",
+        "lr_boundaries": "1522000,1895857",
+        "multi_type": "or",
+        "kmeans_k": "10000,10000,10000,10000,10000,10000,10000,10000,10000,10000",
+        "fre_filter": 100090,
+        "fre_cache_filter": 10009,
+        "resnet_size": 50
+    },
+    // Use clusters formed by KMeans, updating every epoch, smaller k
+    "dynamic_km_1000": {
+        "exp_id": "dynamic_km_1000",
+        "port": 27009,
+        "db_name": "instance_task",
+        "col_name": "dynamic_clustering",
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        "load_exp": "instance_task/control/full",
+        "load_step": 100090,
+        // save every 10 epochs
+        "cluster_method": "KM",
+        "kmeans_k": "1000",
+        "lr_boundaries": "1600000,1873411",
+        "fre_filter": 100090,
+        "fre_cache_filter": 10009
+    },
+    // Use clusters formed by KMeans, updating every epoch, bigger k
+    "dynamic_km_20000": {
+        "exp_id": "dynamic_km_20000",
+        "port": 27009,
+        "db_name": "instance_task",
+        "col_name": "dynamic_clustering",
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        "load_exp": "instance_task/control/full",
+        "load_step": 100090,
+        // save every 10 epochs
+        "cluster_method": "KM",
+        "lr_boundaries": "1694852,1924315",
+        "kmeans_k": 20000,
+        "fre_filter": 100090,
+        "fre_cache_filter": 10009
+    },
+    // Use clusters formed by KMeans, updating every epoch
+    "dynamic_km_multi": {
+        "exp_id": "dynamic_km_multi",
+        "port": 27009,
+        "db_name": "instance_task",
+        "col_name": "dynamic_clustering",
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        "load_exp": "instance_task/control/full",
+        "load_step": 100090,
+        // save every 10 epochs
+        "cluster_method": "KM",
+        "kmeans_k": "1000,10000,20000",
+        "lr_boundaries": "1600000,1873411",
+        "fre_filter": 100090,
+        "fre_cache_filter": 10009
+    },
+    // Use clusters formed by KMeans, updating every epoch
+    "dyn_km_or_mre10_sm": {
+        "exp_id": "dyn_km_or_mre10_sm",
+        "port": 27009,
+        "db_name": "instance_task",
+        "col_name": "dynamic_clustering",
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        "load_exp": "instance_task/control/full",
+        "load_step": 100090,
+        // save every 10 epochs
+        "cluster_method": "KM",
+        "multi_type": "or",
+        "kmeans_k": "30000,30000,30000,30000,30000,30000,30000,30000,30000,30000",
+        "lr_boundaries": "1600000,1873411",
+        "fre_filter": 100090,
+        "fre_cache_filter": 10009
+    },
+    // Use clusters formed by KMeans, updating every epoch
+    "dynamic_km_or_mre10": {
+        "exp_id": "dynamic_km_or_mre10",
+        "port": 27009,
+        "db_name": "instance_task",
+        "col_name": "dynamic_clustering",
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        "load_exp": "instance_task/control/full",
+        "load_step": 100090,
+        // save every 10 epochs
+        "cluster_method": "KM",
+        "multi_type": "or",
+        "kmeans_k": "10000,10000,10000,10000,10000,10000,10000,10000,10000,10000",
+        "lr_boundaries": "1600000,1873411",
+        "fre_filter": 100090,
+        "fre_cache_filter": 10009
+    },
+    // Use clusters formed by KMeans, updating every epoch
+    "dynamic_km_or_mre": {
+        "exp_id": "dynamic_km_or_mre",
+        "port": 27009,
+        "db_name": "instance_task",
+        "col_name": "dynamic_clustering",
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        "load_exp": "instance_task/control/full",
+        "load_step": 100090,
+        // save every 10 epochs
+        "cluster_method": "KM",
+        "multi_type": "or",
+        "kmeans_k": "10000,10000,10000,10000,10000,10000",
+        "lr_boundaries": "1600000,1873411",
+        "fre_filter": 100090,
+        "fre_cache_filter": 10009
+    },
+    // Use clusters formed by KMeans, updating every epoch
+    "dyn_km_or_mre_bigK": {
+        "exp_id": "dyn_km_or_mre_bigK",
+        "port": 27009,
+        "db_name": "instance_task",
+        "col_name": "dynamic_clustering",
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        "load_exp": "instance_task/control/full",
+        "load_step": 100090,
+        "instance_k": 0,
+        // save every 10 epochs
+        "cluster_method": "KM",
+        "multi_type": "or",
+        "kmeans_k": "10000,10000,10000,10000,10000,10000",
+        "lr_boundaries": "1600000,1873411",
+        "fre_filter": 100090,
+        "fre_cache_filter": 10009
+    },
+    // Use clusters formed by KMeans, updating every epoch
+    "dynamic_km_mul_or": {
+        "exp_id": "dynamic_km_mul_or",
+        "port": 27009,
+        "db_name": "instance_task",
+        "col_name": "dynamic_clustering",
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        "load_exp": "instance_task/control/full",
+        "load_step": 100090,
+        // save every 10 epochs
+        "cluster_method": "KM",
+        "multi_type": "or",
+        "kmeans_k": "9000,10000,11000",
+        "lr_boundaries": "1600000,1873411",
+        "fre_filter": 100090,
+        "fre_cache_filter": 10009
+    },
+    // Use clusters formed by KMeans, updating every epoch
+    "dynamic_km_mul_and": {
+        "exp_id": "dynamic_km_mul_and",
+        "port": 27009,
+        "db_name": "instance_task",
+        "col_name": "dynamic_clustering",
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        "load_exp": "instance_task/control/full",
+        "load_step": 100090,
+        // save every 10 epochs
+        "cluster_method": "KM",
+        "multi_type": "and",
+        "kmeans_k": "9000,10000,11000",
+        "lr_boundaries": "1600000,1873411",
+        "fre_filter": 100090,
+        "fre_cache_filter": 10009
+    }
+}

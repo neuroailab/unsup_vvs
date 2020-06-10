@@ -1,0 +1,8 @@
+{
+    "scenenet": 0,
+    "scannet": 0,
+    "pbrnet": 0,
+    "imagenet": 0,
+    "saycam": 1,
+    "saycam_instance": 1
+}

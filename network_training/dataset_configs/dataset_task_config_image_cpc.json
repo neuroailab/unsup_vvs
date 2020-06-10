@@ -1,0 +1,8 @@
+{
+"scenenet": 0,
+"scannet": 0,
+"pbrnet": 0,
+"imagenet": 1,
+"imagenet_cate": 0,
+"imagenet_cpc": 1
+}

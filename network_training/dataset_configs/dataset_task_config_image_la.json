@@ -1,0 +1,9 @@
+{
+"scenenet": 0,
+"scannet": 0,
+"pbrnet": 0,
+"imagenet": 1,
+"imagenet_cate": 0,
+"imagenet_LA": 1,
+"imagenet_LA_kmeans": "30000,30000,30000,30000,30000,30000,30000,30000,30000,30000"
+}

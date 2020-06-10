@@ -1,0 +1,198 @@
+{
+    // Encourage embeddings to stay near pre-determined "neighbor" indices
+    "static_nn2": {
+        "exp_id": "static_nn2",
+        "port": 27009,
+        "db_name": "instance_task",
+        "col_name": "clustering",
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        "add_topn_dot": 2,
+        "nn_list_path": "/mnt/fs3/azhai/center_cropped_embeddings/nearest_neighbors/ep120_nearest_list_top10.npz",
+
+        // only save every 10 epochs
+        "fre_filter": 100090,
+        "load_exp": "instance_task/control/full",
+        // 120 * 10009
+        "load_step": 1201080
+    },
+    "static_nn2_from_ep220": {
+        "exp_id": "static_nn2_from_ep220",
+        "port": 27009,
+        "db_name": "instance_task",
+        "col_name": "clustering",
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        "add_topn_dot": 2,
+        "nn_list_path": "/mnt/fs3/azhai/center_cropped_embeddings/nearest_neighbors/ep220_nearest_list_top10.npz",
+
+        // only save every 10 epochs
+        "fre_filter": 100090,
+        "load_exp": "instance_task/control/full",
+        // 120 * 10009
+        "load_step": 1201080
+    },
+    // Now look at nearest 3, after training on nearest 2 from control epoch 220
+    "static_nn3_from_nn2": {
+        "exp_id": "static_nn3_from_nn2",
+        "port": 27009,
+        "db_name": "instance_task",
+        "col_name": "clustering",
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        "add_topn_dot": 3,
+        "nn_list_path": "/mnt/fs3/azhai/center_cropped_embeddings/static_nn2/ep180_nearest_list_top10.npz",
+
+        // only save every 10 epochs
+        "fre_filter": 100090,
+        "load_exp": "instance_task/control/full",
+        // 120 * 10009
+        "load_step": 1201080
+    },
+    "static_nn5": {
+        "exp_id": "static_nn5",
+        "port": 27009,
+        "db_name": "instance_task",
+        "col_name": "clustering",
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        "add_topn_dot": 5,
+        "nn_list_path": "/mnt/fs3/azhai/center_cropped_embeddings/nearest_neighbors/ep120_nearest_list_top10.npz",
+
+        // only save every 10 epochs
+        "fre_filter": 100090,
+        "load_exp": "instance_task/control/full",
+        // 120 * 10009
+        "load_step": 1201080
+    },
+
+
+
+    // Training with kmeans clusters from control epoch 220, optimize dot
+    // product with random sample of the same cluster
+    "kmeans220_sample64": {
+        "exp_id": "kmeans220_sample64",
+        // "host": "node11-neuroaicluster",
+        "port": 27009,
+        "db_name": "instance_task",
+        "col_name": "clustering",
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        // save every 10 epochs
+        "fre_filter": 200180,
+        "use_clusters": "/mnt/fs3/azhai/center_cropped_embeddings/kmeans/ep220_kmeans0_labels.npy",
+        "num_cluster_samples": 64
+    },
+
+
+
+    // Supervised training imitating follow-up paper, using 1000 kmeans clusters as classes
+    "kmeans220_classify": {
+        "exp_id": "kmeans220_classify",
+        "port": 27009,
+        "db_name": "instance_task",
+        "col_name": "clustering",
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        // save every 10 epochs
+        "fre_filter": 100090,
+        "use_clusters": "/mnt/fs3/azhai/center_cropped_embeddings/kmeans/ep220_kmeans0_labels.npy",
+        "maximize_log_cluster_prob": true
+    },
+    // Second iteration
+    "kmeans220_classify_rd2": {
+        "exp_id": "kmeans220_classify_rd2",
+        "port": 27009,
+        "db_name": "instance_task",
+        "col_name": "clustering",
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        // save every 10 epochs
+        "fre_filter": 100090,
+        "use_clusters": "/mnt/fs3/azhai/center_cropped_embeddings/kmeans220_classify/ep110_kmeans0_labels.npy",
+        "maximize_log_cluster_prob": true
+    },
+    "kmeans220_classify_from80": {
+        "exp_id": "kmeans220_classify_from80",
+        "port": 27009,
+        "db_name": "instance_task",
+        "col_name": "clustering",
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        // save every 10 epochs
+        "fre_filter": 100090,
+        "use_clusters": "/mnt/fs3/azhai/center_cropped_embeddings/kmeans/ep220_kmeans0_labels.npy",
+        "maximize_log_cluster_prob": true,
+        "load_exp": "instance_task/control/full",
+        "load_step": 800720
+    },
+
+
+
+    // Use 500 clusters instead
+    "kmeans220_classify_k500": {
+        "exp_id": "kmeans220_classify_k500",
+        "port": 27009,
+        "db_name": "instance_task",
+        "col_name": "clustering",
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        // save every 10 epochs
+        "fre_filter": 100090,
+        "use_clusters": "/mnt/fs3/azhai/center_cropped_embeddings/kmeans/ep220_kmeans0_k500_labels.npy",
+        "maximize_log_cluster_prob": true
+    },
+    // Use clusters formed by nearest-neighbors
+    "kmeans220_classify_nn_clusters": {
+        "exp_id": "kmeans220_classify_nn_clusters",
+        "port": 27009,
+        "db_name": "instance_task",
+        "col_name": "clustering",
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        // save every 10 epochs
+        "fre_filter": 100090,
+        "use_clusters": "/mnt/fs3/azhai/ep220_nn_cluster_labels.npy",
+        "maximize_log_cluster_prob": true
+    },
+    // Use clusters formed by nearest-neighbors
+    "classify_nn_clusters_rd2": {
+        "exp_id": "classify_nn_clusters_rd2",
+        "port": 27009,
+        "db_name": "instance_task",
+        "col_name": "clustering",
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        // save every 10 epochs
+        "fre_filter": 100090,
+        "use_clusters": "/mnt/fs3/azhai/center_cropped_embeddings/kmeans220_classify_nn_clusters/ep140_nn_cluster_labels.npy",
+        "maximize_log_cluster_prob": true
+    },
+
+
+
+    // Training with supervised class labels, optimize dot product
+    // with random sample of the same class
+    "supervised_classes_sample1": {
+        "exp_id": "supervised_classes_sample1",
+        "port": 27009,
+        "db_name": "instance_task",
+        "col_name": "clustering",
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        // save every 20 epochs
+        "fre_filter": 200180,
+        "use_clusters": "/mnt/fs3/azhai/center_cropped_embeddings/all_labels.npy"
+    },
+    "supervised_classes_sample64": {
+        "exp_id": "supervised_classes_sample64",
+        "port": 27009,
+        "db_name": "instance_task",
+        "col_name": "clustering",
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        // save every 20 epochs
+        "fre_filter": 200180,
+        "use_clusters": "/mnt/fs3/azhai/center_cropped_embeddings/all_labels.npy",
+        "num_cluster_samples": 64
+    },
+    // Supervised training imitating follow-up paper
+    "supervised_classify": {
+        "exp_id": "supervised_classify",
+        "port": 27009,
+        "db_name": "instance_task",
+        "col_name": "clustering",
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        // save every 20 epochs
+        "fre_filter": 200180,
+        "use_clusters": "/mnt/fs3/azhai/center_cropped_embeddings/all_labels.npy",
+        "maximize_log_cluster_prob": true
+    }
+}

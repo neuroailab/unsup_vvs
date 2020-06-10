@@ -1,0 +1,63 @@
+{
+    "dynamic_semi_p10": {
+        "exp_id": "dynamic_semi_p10",
+        "port": 27009,
+        "db_name": "instance_task",
+        "col_name": "dynamic_clustering",
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        "load_exp": "instance_task/control/full",
+        "load_step": 100090,
+        "instance_k": 0,
+        "cluster_method": "SEMI",
+        "clstr_path": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/imagenet_p10.npy",
+        "fre_filter": 100090,
+        "fre_cache_filter": 10009
+    },
+    "dynamic_semi_p05": {
+        "exp_id": "dynamic_semi_p05_2",
+        "port": 27009,
+        "db_name": "instance_task",
+        "col_name": "dynamic_clustering",
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        "load_exp": "instance_task/control/full",
+        "load_step": 100090,
+        "instance_k": 0,
+        // save every 10 epochs
+        "cluster_method": "SEMI",
+        "clstr_path": "/mnt/fs3/divyansh/imagenet_alex_p05.npy",
+        "lr_boundaries": "2562501,3863866",
+        "fre_filter": 100090,
+        "fre_cache_filter": 10009
+    },
+    "dyn_end_semi_p03": {
+        "exp_id": "dyn_end_semi_p03",
+        "port": 27009,
+        "db_name": "instance_task",
+        "col_name": "dynamic_clustering",
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        "load_exp": "instance_task/control/full",
+        "load_step": 2201980,
+        "lr_boundaries": "2402201",
+        "instance_k": 0,
+        "cluster_method": "SEMI",
+        "clstr_path": "/mnt/fs3/divyansh/imagenet_alex_p03.npy",
+        "fre_filter": 100090,
+        "fre_cache_filter": 10009
+    },
+    "dynamic_semi_p03": {
+        "exp_id": "dynamic_semi_p03_3",
+        "port": 27009,
+        "db_name": "instance_task",
+        "col_name": "dynamic_clustering",
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        "load_exp": "instance_task/control/full",
+        "load_step": 100090,
+        "instance_k": 0,
+        // save every 10 epochs
+        "cluster_method": "SEMI",
+        "clstr_path": "/mnt/fs3/divyansh/imagenet_alex_p03.npy",
+        "lr_boundaries": "2163076,2877426",
+        "fre_filter": 100090,
+        "fre_cache_filter": 10009
+    }
+}

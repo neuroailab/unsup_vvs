@@ -1,0 +1,24 @@
+{
+    "semi_p03_mid": {
+        "save_exp": "instance_transfer/dyn_clustering/semi_p03_mid",
+        "load_exp": "instance_task/dynamic_clustering/dynamic_semi_p03_3",
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        "load_step": 2952655,
+        "port": 27009,
+        "lr_boundaries": "3253200,3553205",
+        "get_all_layers": "Mid-500,1000,1500,2000",
+        "fre_filter": 50045,
+        "fre_cache_filter": 10009
+    },
+    "dyn_km_ormre_mid": {
+        "save_exp": "instance_transfer/dyn_clustering/dyn_km_ormre_mid",
+        "load_exp": "instance_task/dynamic_clustering/dynamic_km_or_mre",
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        "load_step": 1961764,
+        "port": 27009,
+        "lr_boundaries": "2172170,2492500",
+        "get_all_layers": "Mid-500,1000,1500,2000",
+        "fre_filter": 50045,
+        "fre_cache_filter": 10009
+    }
+}

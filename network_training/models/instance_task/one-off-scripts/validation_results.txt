@@ -1,0 +1,44 @@
+kmeans220_classify, k=1, 37.4
+kmeans220_classify, k=10, 42.728
+kmeans220_classify, k=50, 45.274
+kmeans220_classify, k=200, 45.434
+
+kmeans220_classify_rd2, k=1, 36.902
+kmeans220_classify_rd2, k=10, 41.782
+kmeans220_classify_rd2, k=50, 43.03
+kmeans220_classify_rd2, k=200, 42.66
+
+kmeans220_classify_from80, k=1, 35.696
+kmeans220_classify_from80, k=10, 41.33
+kmeans220_classify_from80, k=50, 43.716
+kmeans220_classify_from80, k=200, 43.694
+
+kmeans220_classify_k500, k=1, 36.21
+kmeans220_classify_k500, k=10, 41.684
+kmeans220_classify_k500, k=50, 43.916
+kmeans220_classify_k500, k=200, 44.1
+
+kmeans220_classify_nn_clusters, k=1, 35.136
+kmeans220_classify_nn_clusters, k=10, 41.314
+kmeans220_classify_nn_clusters, k=50, 44.538
+kmeans220_classify_nn_clusters, k=200, 45.412
+
+classify_nn_clusters_rd2, k=1, 35.882
+classify_nn_clusters_rd2, k=10, 41.796
+classify_nn_clusters_rd2, k=50, 45.02
+classify_nn_clusters_rd2, k=200, 45.878
+
+dynamic_nn_clusters, k=1, 34.792
+dynamic_nn_clusters, k=10, 40.6161
+dynamic_nn_clusters, k=50, 44.096
+dynamic_nn_clusters, k=200, 45.042
+
+control, k=1, 32.594
+control, k=10, 38.732
+control, k=50, 42.006
+control, k=200, 43.072
+
+control_denom, k=1, 33.886
+control_denom, k=10, 39.716
+control_denom, k=50, 43.256
+control_denom, k=200, 44.402

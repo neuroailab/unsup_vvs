@@ -1,0 +1,9 @@
+{
+"scenenet": 0,
+"scannet": 0,
+"pbrnet": 0,
+"imagenet": 1,
+"imagenet_cate": 0,
+"imagenet_ae": 1,
+"imagenet_ae_l1": 1e-4
+}

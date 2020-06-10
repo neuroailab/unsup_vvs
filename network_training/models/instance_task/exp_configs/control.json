@@ -1,0 +1,181 @@
+{
+    // Control experiment on full ImageNet data
+    "full": {
+        "exp_id": "full",
+        // "host": "node11-neuroaicluster",
+        "port": 27009,
+        "db_name": "instance_task",
+        "col_name": "control",
+        // "cache_dir": "/mnt/fs1/azhai/checkpoints",
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/"
+    },
+    // Control experiment on full ImageNet data
+    "full50": {
+        "exp_id": "full50",
+        // "host": "node11-neuroaicluster",
+        "port": 27009,
+        "db_name": "instance_task",
+        "col_name": "control",
+        // "cache_dir": "/mnt/fs1/azhai/checkpoints",
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        "fre_filter": 100090,
+        "lr_boundaries": "1470000,2080000",
+        "resnet_size": 50
+    },
+    // Similar to vanilla instance_task but calculate the softmax denominator
+    "nn20": {
+        "exp_id": "nn20",
+        "port": 27009,
+        "db_name": "instance_task",
+        "col_name": "control",
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        "fre_filter": 100090,
+        "fre_cache_filter": 10009,
+        "use_clusters": "20",
+        "maximize_log_cluster_prob": true,
+        // Has trouble training from scratch
+        "load_exp": "instance_task/control/full",
+        "load_step": 100090
+    },
+    // Similar to vanilla instance_task but calculate the softmax denominator
+    "nn200": {
+        "exp_id": "nn200",
+        "port": 27009,
+        "db_name": "instance_task",
+        "col_name": "control",
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        "fre_filter": 100090,
+        "fre_cache_filter": 10009,
+        "use_clusters": "200",
+        "maximize_log_cluster_prob": true,
+        // Has trouble training from scratch
+        "load_exp": "instance_task/control/full",
+        "load_step": 100090
+    },
+    // Similar to vanilla instance_task but calculate the softmax denominator
+    "compute_denom": {
+        "exp_id": "compute_denom",
+        "port": 27009,
+        "db_name": "instance_task",
+        "col_name": "control",
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        "fre_filter": 100090,
+        "use_clusters": "/mnt/fs3/azhai/identity_labeling.npy",
+        "maximize_log_cluster_prob": true,
+        // Has trouble training from scratch
+        "load_exp": "instance_task/control/full",
+        "load_step": 100090
+    },
+    "compute_denom_dedup": {
+        "exp_id": "compute_denom_dedup",
+        "port": 27009,
+        "db_name": "instance_task",
+        "col_name": "control",
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        "fre_filter": 100090,
+        "use_clusters": "/mnt/fs3/azhai/identity_labeling_dedup.npy",
+        "maximize_log_cluster_prob": true,
+        // Has trouble training from scratch
+        "load_exp": "instance_task/control/full",
+        "load_step": 100090
+    },
+    "small": {
+        "exp_id": "small",
+        // "host": "node11-neuroaicluster",
+        "port": 27009,
+        "db_name": "instance_task",
+        "col_name": "control",
+        "data_len": 125113,
+        // "cache_dir": "/mnt/fs1/azhai/checkpoints",
+        "image_dir": "/mnt/fs1/azhai/image_label_widx_first100",
+        "fre_valid": 977,
+        "fre_metric": 977,
+        "fre_filter": 9770
+    },
+    // Control experiment on full ImageNet data, using AlexNet model
+    "alexnet": {
+        "exp_id": "alexnet2",
+        // "host": "node11-neuroaicluster",
+        "port": 27009,
+        "db_name": "instance_task",
+        "col_name": "control",
+        // "cache_dir": "/mnt/fs1/azhai/checkpoints",
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        "init_lr": 0.003,
+        "lr_boundaries": "3142787",
+        "model_type": "alexnet"
+    },
+    // Control experiment on full ImageNet data, using VggNet model
+    "vggnet_bn": {
+        "exp_id": "vggnet_bn",
+        "port": 27009,
+        "db_name": "instance_task",
+        "col_name": "control",
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        "init_lr": 0.03,
+        "model_type": "vggnet",
+        "fre_filter": 100090,
+        "fre_cache_filter": 10009
+    },
+    // Control experiment on full ImageNet data, using AlexNet model
+    "alexnet_bn": {
+        "exp_id": "alexnet_bn",
+        // "host": "node11-neuroaicluster",
+        "port": 27009,
+        "db_name": "instance_task",
+        "col_name": "control",
+        // "cache_dir": "/mnt/fs1/azhai/checkpoints",
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        "init_lr": 0.03,
+        "model_type": "alexnet_bn_no_drop",
+        "lr_boundaries": "1650476,2010830",
+        "fre_filter": 100090,
+        "fre_cache_filter": 10009
+    },
+    // Control experiment on full ImageNet data, using AlexNet model
+    "alexnet_bn_drp": {
+        "exp_id": "alexnet_bn_drp",
+        // "host": "node11-neuroaicluster",
+        "port": 27009,
+        "db_name": "instance_task",
+        "col_name": "control",
+        // "cache_dir": "/mnt/fs1/azhai/checkpoints",
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        "init_lr": 0.03,
+        "model_type": "alexnet_bn",
+        "lr_boundaries": "1650476,2010830",
+        "fre_filter": 100090,
+        "fre_cache_filter": 10009
+    },
+    // Control experiment on full ImageNet data, using AlexNet model, ramping up
+    "alexnet_warmup": {
+        "exp_id": "alexnet_warmup",
+        // "host": "node11-neuroaicluster",
+        "port": 27009,
+        "db_name": "instance_task",
+        "col_name": "control",
+        // "cache_dir": "/mnt/fs1/azhai/checkpoints",
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        "init_lr": 0.003,
+        "target_lr": 0.03,
+        "ramp_up_epoch": 25,
+        "model_type": "alexnet",
+        "fre_filter": 100090,
+        "fre_cache_filter": 10009
+    },
+    // Control experiment on full ImageNet data, using ConvRNN model 
+    "convrnn": {
+        "exp_id": "convrnn5",
+        // "host": "node11-neuroaicluster",
+        "port": 27009,
+        "db_name": "instance_task",
+        "col_name": "control",
+        // "cache_dir": "/mnt/fs1/azhai/checkpoints",
+        "image_dir": "/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx/",
+        "init_lr": 0.00673624975799,
+        "batch_size": 128,
+        "model_type": "convrnn",
+        "fre_filter": 100090,
+        "fre_cache_filter": 10009
+    }
+}

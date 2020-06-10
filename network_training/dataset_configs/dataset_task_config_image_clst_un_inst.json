@@ -1,0 +1,9 @@
+{
+"scenenet": 0,
+"scannet": 0,
+"pbrnet": 0,
+"imagenet": 1,
+"imagenet_instance_cluster": 1,
+"imagenet_un": 1,
+"imagenet_un_instance": 1
+}
