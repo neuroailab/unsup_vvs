@@ -181,6 +181,31 @@ def _do_scale(image, size):
   return tf.image.resize_bicubic([image], shape)[0]
 
 
+def _central_crop(image_list, crop_height, crop_width):
+  """Performs central crops of the given image list.
+
+  Args:
+    image_list: a list of image tensors of the same dimension but possibly
+      varying channel.
+    crop_height: the height of the image following the crop.
+    crop_width: the width of the image following the crop.
+
+  Returns:
+    the list of cropped images.
+  """
+  outputs = []
+  for image in image_list:
+    image_height = tf.shape(image)[0]
+    image_width = tf.shape(image)[1]
+
+    offset_height = (image_height - crop_height) / 2
+    offset_width = (image_width - crop_width) / 2
+
+    outputs.append(_crop(image, offset_height, offset_width,
+                         crop_height, crop_width))
+  return outputs
+
+
 def _center_crop(image, size):
   """Crops to center of image with specified `size`."""
   image_height = tf.shape(image)[0]

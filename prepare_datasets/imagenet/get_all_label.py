@@ -4,7 +4,7 @@ import os
 import numpy as np
 import sys
 from tqdm import tqdm
-import cPickle
+import pickle
 
 def get_parser():
     parser = argparse.ArgumentParser(
@@ -12,15 +12,12 @@ def get_parser():
                     + 'with images, labels, and indexs')
     parser.add_argument(
             '--save_path', 
-            default='./all_label.pkl', 
-            type=str, action='store', 
-            help='Directory to save the tfrecords')
+            default=None, type=str, required=True,
+            action='store', help='Directory to save the pkl file')
     parser.add_argument(
             '--load_dir', 
-            default='/data2/chengxuz/Dataset/TFRecord_Imagenet_standard/' \
-                    + 'image_label_full_widx',
-            type=str, action='store', 
-            help='Directory to load the tfrecords')
+            default=None, type=str, required=True,
+            action='store', help='Directory to load the tfrecords')
     parser.add_argument(
             '--data_format', default='train-%05i-of-01024', 
             type=str, action='store', 
@@ -58,8 +55,8 @@ def main():
                     .int64_list.value[0])
             label_arr[index_decode] = label_decode
         input_iter.close()
-    # Write to cPickle
-    cPickle.dump(label_arr, open(args.save_path, 'w'))
+    # Write to pickle
+    pickle.dump(label_arr, open(args.save_path, 'wb'))
 
 if __name__=="__main__":
     main()

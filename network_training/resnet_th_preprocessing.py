@@ -9,11 +9,9 @@ import numpy as np
 import pdb
 from utils import rgb_to_lab, ab_to_Q
 
-sys.path.append('../no_tfutils/')
-from vgg_preprocessing import preprocess_image, _aspect_preserving_resize, \
-        _central_crop
 from resnet_preprocessing import _at_least_x_are_true, \
-        _center_crop, _do_scale
+        _center_crop, _do_scale, _aspect_preserving_resize, \
+        _central_crop
 
 EPS = 1e-6
 

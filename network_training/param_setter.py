@@ -10,7 +10,6 @@ import utils
 import pdb
 
 import optimizer
-import combinet_builder
 from tpu_data_provider import TPUCombineWorld as CombineWorldDataset
 import tpu_dp_params
 from cmd_parser import get_parser, load_setting
@@ -275,85 +274,6 @@ class ParamSetter(object):
                 'func': lambda *args, **kwargs: self.model_builder.build(
                     *args, **kwargs)}
         model_params = self._add_gpu_to_model_params(model_params)
-        return model_params
-
-    def get_model_params(self):
-        args = self.args
-
-        func_net = getattr(combinet_builder, args.namefunc)
-        cfg_initial = model_cfg_parser.get_network_cfg(args)
-        self.cfg_dataset = self.__load_dataset_configs(args.dataconfig)
-
-        val_target = utils.get_val_target(self.cfg_dataset)
-        self.val_target = val_target
-
-        model_params = {
-                'func': func_net,
-                'seed': args.seed,
-                'cfg_initial': cfg_initial,
-                'cfg_dataset': self.cfg_dataset,
-                'init_stddev': args.init_stddev,
-                'ignorebname': args.ignorebname,
-                'ignorebname_new': args.ignorebname_new,
-                'add_batchname': args.add_batchname,
-                'weight_decay': args.weight_decay,
-                'global_weight_decay': args.global_weight_decay,
-                'init_type': args.init_type,
-                'cache_filter': args.cache_filter,
-                'fix_pretrain': args.fix_pretrain,
-                'extra_feat': args.extra_feat,
-                'color_norm': args.color_norm,
-                'corr_bypassadd': args.corr_bypassadd,
-                'mean_teacher': args.mean_teacher==1,
-                'ema_decay': args.ema_decay,
-                'ema_zerodb': args.ema_zerodb==1,
-                'sm_fix': args.sm_fix,
-                'sm_de_fix': args.sm_de_fix,
-                'sm_depth_fix': args.sm_depth_fix,
-                'sm_resnetv2': args.sm_resnetv2,
-                'sm_resnetv2_1': args.sm_resnetv2_1,
-                'sm_bn_trainable': args.sm_bn_trainable==1,
-                'sm_bn_fix': args.sm_bn_fix,
-                'tpu_flag': args.tpu_flag,
-                'combine_tpu_flag': args.combine_tpu_flag,
-                'tpu_depth': args.tpu_depth,
-                'tpu_tl_imagenet':args.tpu_tl_imagenet,
-                'down_sample': args.col_down,
-                'col_knn': args.col_knn==1,
-                'color_dp_tl': args.color_dp_tl==1,
-                'rp_dp_tl': args.rp_dp_tl==1,
-                'depth_imn_tl': args.depth_imn_tl==1,
-                'use_lasso': args.use_lasso,
-                'combine_col_rp': args.combine_col_rp,
-                'train_anyway':args.train_anyway,
-                }
-
-        instance_params = self._get_instance_params()
-        model_params.update(instance_params)
-
-        if args.tpu_task:
-            tpu_model_params = {
-                    'tpu_name':args.tpu_name,
-                    'gcp_project':args.gcp_project,
-                    'tpu_zone':args.tpu_zone,
-                    'tpu_task':args.tpu_task,
-                    'num_shards':8,
-                    }
-            model_params.update(tpu_model_params)
-
-        if args.namefunc in [
-                'combine_normal_tfutils_new', 
-                'combine_tfutils_general'] and args.no_prep==1:
-            model_params['no_prep'] = 1
-
-        if not args.modeldconfig is None:
-            cfg_dataset_model = self.__load_dataset_configs(args.modeldconfig)
-            model_params['cfg_dataset'] = cfg_dataset_model
-
-        model_params['num_gpus'] = args.n_gpus
-        model_params['devices'] \
-                = ['/gpu:%i' % (i + args.gpu_offset) \
-                   for i in range(args.n_gpus)]
         return model_params
 
     def _get_tpu_dp_params(self):

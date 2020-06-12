@@ -9,13 +9,13 @@ def get_parser():
             description='The script to generate tfrs according to index')
     parser.add_argument(
             '--save_dir', 
-            default='/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_p01_balanced', 
-            type=str, action='store', 
+            default=None, type=str, required=True,
+            action='store', 
             help='Directory to save the results')
     parser.add_argument(
             '--load_dir', 
-            default='/mnt/fs1/Dataset/TFRecord_Imagenet_standard/image_label_full_widx', 
-            type=str, action='store', help='Directory to load the tfrecords')
+            default=None, type=str, required=True,
+            action='store', help='Directory to load the tfrecords')
     parser.add_argument(
             '--img_per_file', 
             default=130, 
@@ -23,8 +23,8 @@ def get_parser():
             help='Number of images per file')
     parser.add_argument(
             '--index_path', 
-            default='/mnt/fs1/Dataset/TFRecord_Imagenet_standard/imagenet_p01_balanced_index.npy', 
-            type=str, action='store', 
+            default=None, type=str, required=True,
+            action='store', 
             help='Index that will be used')
     return parser
 

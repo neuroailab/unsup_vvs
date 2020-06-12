@@ -1,1 +1,0 @@
-python write_tfrs.py --staindx ${1} --lenindx ${2} --savedir /scratch/users/chengxuz/Data/imagenet_tfr/tfrs_val --sshfolder /mnt/fs1/Dataset/imagenet_again/tfr_val --txtprefix /scratch/users/chengxuz/Data/imagenet_devkit/val_fname_ --checkmode 1 --checkexist 0
