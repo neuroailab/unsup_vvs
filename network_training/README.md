@@ -23,3 +23,17 @@ The `set_func_name` parameter should be `script_name.function_name`. Here the `s
 ## Supervised
 
 `set_func_name` should be `supervised.cate_res18_exp0`, `supervised.cate_res18_exp1`, `supervised.cate_res18_exp2`, corresponding to three networks with different initializations.
+
+## Local Aggregation
+
+`set_func_name` should be `la.res18_la_s0`, `la.res18_la_s1`, `la.res18_la_s2`.
+
+
+## SimCLR
+
+SimCLR needs to be trained through preparing ImageNet following instructions in folder `models/simclr` and using TPUs (v3-pod-256 recommended). After preparing the dataset and building TPUs, run scripts `training_bashes/train_res18_in_0.sh`, `training_bashes/train_res18_in_1.sh`, and `training_bashes/train_res18_in_2.sh` in that folder.
+
+
+## Instance Recognition
+
+`set_func_name` should be `ir.res18_ir_s0`, `ir.res18_ir_s1`, `ir.res18_ir_s2`.

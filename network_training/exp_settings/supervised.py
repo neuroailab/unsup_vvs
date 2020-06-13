@@ -4,7 +4,7 @@ from exp_settings.shared_settings import basic_res18
 def cate_res18_exp0(args):
     args = basic_res18(args)
     args.nport = 27007
-    args.dbname = 'pub_cate_aug'
+    args.dbname = 'pub_cate'
     args.collname = 'res18'
     args.expId = 'exp_seed0'
     args.resnet_prep = True

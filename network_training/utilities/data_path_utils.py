@@ -52,16 +52,12 @@ def get_data_path(localimagenet=None, overall_local=None):
     # ImageNet
     DATA_PATH['imagenet/image_label_full'] \
             = '%s/TFRecord_Imagenet_standard/image_label_full_widx' % imagenet_prefix
-    DATA_PATH['imagenet/image_label_part'] \
-            = '%s/TFRecord_Imagenet_standard/image_label_full_part' % imagenet_prefix
     DATA_PATH['imagenet/image_label_part1_balanced'] \
             = '%s/TFRecord_Imagenet_standard/image_label_p01_balanced' % imagenet_prefix
     DATA_PATH['imagenet/image_label_part2_balanced'] \
             = '%s/TFRecord_Imagenet_standard/image_label_p02_balanced' % imagenet_prefix
     DATA_PATH['imagenet/image_label_part3'] \
             = '%s/TFRecord_Imagenet_standard/imagenet_p03_ub' % imagenet_prefix
-    DATA_PATH['imagenet/image_label_part3_widx_ordrd'] \
-            = '%s/TFRecord_Imagenet_standard/image_label_p03_widx_ordered' % imagenet_prefix
     DATA_PATH['imagenet/image_label_part4_balanced'] \
             = '%s/TFRecord_Imagenet_standard/image_label_p04_balanced' % imagenet_prefix
     DATA_PATH['imagenet/image_label_part5'] \
@@ -76,18 +72,6 @@ def get_data_path(localimagenet=None, overall_local=None):
             = '%s/TFRecord_Imagenet_standard/image_label_p50_balanced' % imagenet_prefix
     DATA_PATH['imagenet/image_label_full_widx'] \
             = '%s/TFRecord_Imagenet_standard/image_label_full_widx' % imagenet_prefix
-    DATA_PATH['imagenet/image_label_full_infant'] \
-            = '%s/new_imagenet_tfr' % imagenet_prefix
-    DATA_PATH['imagenet/image_label_full_infant_ctl_es'] \
-            = '%s/new_imagenet_ctl_eq_smpl_tfr' % imagenet_prefix
-    DATA_PATH['imagenet/image_label_full_infant_ctl'] \
-            = '%s/new_imagenet_ctl_tfr' % imagenet_prefix
-    DATA_PATH['imagenet/image_label_full_infant_widx'] \
-            = '%s/new_imagenet_tfr_widx' % imagenet_prefix
-    DATA_PATH['imagenet/image_label_part30_widx_ordrd'] \
-            = '%s/TFRecord_Imagenet_standard/image_label_p30_widx_ordered' % imagenet_prefix
-    DATA_PATH['imagenet/image_label_part70_widx_ordrd'] \
-            = '%s/TFRecord_Imagenet_standard/image_label_p70_widx_ordered' % imagenet_prefix
 
     DATA_PATH['saycam/frames'] = '/mnt/fs4/chengxuz/Dataset/saycam_frames_tfr'
     DATA_PATH['saycam/all_frames'] = '/mnt/fs4/chengxuz/Dataset/saycam_all_frames_tfr'
