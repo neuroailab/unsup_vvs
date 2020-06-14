@@ -20,13 +20,17 @@ Otherwise, you need to modify contents in `utilities/data_path_utils.py`.
 
 The `set_func_name` parameter should be `script_name.function_name`. Here the `script_name` should be scripts hosted in `exp_settings` folder. `function_name` is the function in the script you want to run.
 
+Certain models may require multiple gpus. To do that, just set `gpu_numbers` as all the gpus you want to use separated by commas. Please use 1 or even number of gpus.
+
+If the training is unexpectedly interrupted, you can just run the same command to resume the training, which should load from the latest saved model.
+
 ## Supervised
 
 `set_func_name` should be `supervised.cate_res18_exp0`, `supervised.cate_res18_exp1`, `supervised.cate_res18_exp2`, corresponding to three networks with different initializations.
 
 ## Local Aggregation
 
-`set_func_name` should be `la.res18_la_s0`, `la.res18_la_s1`, `la.res18_la_s2`.
+`set_func_name` should be `la.res18_la_s0`, `la.res18_la_s1`, `la.res18_la_s2`. Due to an implmenetation problem, if your training is interrupted, you need to comment a sentence in the setting before resuming the training, see line 51 of `exp_settings/la.py`.
 
 
 ## SimCLR
@@ -37,3 +41,23 @@ SimCLR needs to be trained through preparing ImageNet following instructions in 
 ## Instance Recognition
 
 `set_func_name` should be `ir.res18_ir_s0`, `ir.res18_ir_s1`, `ir.res18_ir_s2`.
+
+
+## Relative Position
+
+`set_func_name` should be `rp.res18_rp_s0`, `rp.res18_rp_s1`, `rp.res18_rp_s2`.
+
+
+## Colorization
+
+`set_func_name` should be `col.res18_col_s0`, `col.res18_col_s1`, `col.res18_col_s2`.
+
+
+## CPC
+
+`set_func_name` should be `cpc.res18_cpc_s0`, `cpc.res18_cpc_s1`, `cpc.res18_cpc_s2`.
+
+
+## Auto-Encoder
+
+`set_func_name` should be `ae.res18_ae_s0`, `ae.res18_ae_s1`, `ae.res18_ae_s2`.

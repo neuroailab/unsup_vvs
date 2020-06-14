@@ -137,28 +137,14 @@ class ModelBuilder(object):
         if self.__need_image_dim_cmprss():
             image_dataset = self.__image_dim_cmprss(image_dataset)
 
-        image_dataset = tf.div(
-                image_dataset, tf.constant(255, dtype=tf.float32))
         if tpu_task:
             if color_norm == 1:
                 image_dataset = color_normalize(image_dataset)
         else:
             if do_prep:
+                image_dataset = tf.div(
+                        image_dataset, tf.constant(255, dtype=tf.float32))
                 image_dataset = color_normalize(image_dataset)
-
-        if self.args.color_dp_tl:
-            image_dataset = rgb_to_lab(image_dataset)
-            image_dataset = image_dataset[:,:,:,:1] - 50
-            if self.args.combine_col_rp==1:
-                image_dataset = tf.tile(image_dataset, [1, 1, 1, 3])
-
-        if self.args.rp_dp_tl:
-            offset = tf.constant(MEAN_RGB, shape=[1, 1, 3])
-            image_dataset -= offset
-
-        if self.args.input_mode == 'sobel':
-            image_dataset = ApplySobel(image_dataset)
-            image_dataset = tf.squeeze(image_dataset)
 
         if self.__need_cpc():
             image_dataset = cpc_utils.image_preprocess(image_dataset)
