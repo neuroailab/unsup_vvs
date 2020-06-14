@@ -26,7 +26,7 @@ If the training is unexpectedly interrupted, you can just run the same command t
 
 ## Supervised
 
-`set_func_name` should be `supervised.cate_res18_exp0`, `supervised.cate_res18_exp1`, `supervised.cate_res18_exp2`, corresponding to three networks with different initializations.
+`set_func_name` should be `supervised.super_res18_s0`, `supervised.super_res18_s1`, `supervised.super_res18_s2`, corresponding to three networks with different initializations.
 
 ## Local Aggregation
 

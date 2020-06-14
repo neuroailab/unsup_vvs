@@ -1,12 +1,12 @@
 from exp_settings.shared_settings import basic_res18
 
 
-def cate_res18_exp0(args):
+def super_res18_s0(args):
     args = basic_res18(args)
     args.nport = 27007
-    args.dbname = 'pub_cate'
+    args.dbname = 'pub_super'
     args.collname = 'res18'
-    args.expId = 'exp_seed0'
+    args.expId = 'super_s0'
     args.resnet_prep = True
     args.resnet_prep_size = True
     args.lr_boundaries = "160000,310000,460000"
@@ -15,15 +15,15 @@ def cate_res18_exp0(args):
     return args
 
 
-def cate_res18_exp1(args):
-    args = cate_res18_exp0(args)
-    args.expId = 'exp_seed1'
+def super_res18_s1(args):
+    args = super_res18_s0(args)
+    args.expId = 'super_s1'
     args.seed = 1
     return args
 
 
-def cate_res18_exp2(args):
-    args = cate_res18_exp0(args)
-    args.expId = 'exp_seed2'
+def super_res18_s2(args):
+    args = super_res18_s0(args)
+    args.expId = 'super_s2'
     args.seed = 2
     return args

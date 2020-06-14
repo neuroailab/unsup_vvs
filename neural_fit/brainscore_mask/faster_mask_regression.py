@@ -1,9 +1,34 @@
 from brainscore.metrics.regression import MaskRegression
 import numpy as np
 import pdb
-from nf_utils import compute_corr
 from tqdm import tqdm
 import os
+
+
+def compute_corr(x, y):
+    import tensorflow as tf
+    """
+    Computes correlation of input vectors, using tf operations
+    """
+    x = tf.cast(tf.reshape(x, shape=(-1,)), tf.float32) # reshape and cast to ensure compatibility
+    y = tf.cast(tf.reshape(y, shape=(-1,)), tf.float32)
+    real_mask_x = tf.math.logical_not(tf.math.is_nan(x))
+    real_mask_y = tf.math.logical_not(tf.math.is_nan(y))
+    real_mask = tf.math.logical_and(real_mask_x, real_mask_y)
+    x = tf.boolean_mask(x, real_mask)
+    y = tf.boolean_mask(y, real_mask)
+    #assert x.get_shape() == y.get_shape(), (x.get_shape(), y.get_shape())
+    n = tf.cast(tf.shape(x)[0], tf.float32)
+    x_sum = tf.reduce_sum(x)
+    y_sum = tf.reduce_sum(y)
+    xy_sum = tf.reduce_sum(tf.multiply(x, y))
+    x2_sum = tf.reduce_sum(tf.pow(x, 2))
+    y2_sum = tf.reduce_sum(tf.pow(y, 2))
+    numerator = tf.scalar_mul(n, xy_sum) - tf.scalar_mul(x_sum, y_sum)
+    denominator = tf.sqrt(tf.scalar_mul(tf.scalar_mul(n, x2_sum) - tf.pow(x_sum, 2),
+				       tf.scalar_mul(n, y2_sum) - tf.pow(y_sum, 2))) + tf.constant(1e-4)
+    corr = tf.truediv(numerator, denominator)
+    return corr
 
 
 def get_iter_from_one_input(X, batch_size):

@@ -7,16 +7,16 @@ from collections import OrderedDict
 
 from tfutils.imagenet_data import color_normalize
 sys.path.append(os.path.abspath('..'))
-sys.path.append(os.path.abspath('../combine_pred')) # needed for inside imports
-sys.path.append(os.path.abspath('../combine_pred/models')) # needed for inside imports
+sys.path.append(os.path.abspath('../network_training')) # needed for inside imports
+sys.path.append(os.path.abspath('../network_training/models')) # needed for inside imports
 from models.model_blocks import NoramlNetfromConv
-import combine_pred.cmd_parser as cmd_parser
-from combine_pred.models.config_parser import get_network_cfg
-from combine_pred.models.model_builder import ModelBuilder
-from combine_pred.models.rp_col_utils import rgb_to_lab
-from combine_pred.models.mean_teacher_utils import \
+import network_training.cmd_parser as cmd_parser
+from network_training.models.config_parser import get_network_cfg
+from network_training.models.model_builder import ModelBuilder
+from network_training.models.rp_col_utils import rgb_to_lab
+from network_training.models.mean_teacher_utils import \
         ema_variable_scope, name_variable_scope
-from combine_pred.models.instance_task.model.instance_model \
+from network_training.models.instance_task.model.instance_model \
         import resnet_embedding
 
 MEAN_RGB = [0.485, 0.456, 0.406]
@@ -24,7 +24,7 @@ MEAN_RGB = [0.485, 0.456, 0.406]
 
 def get_simclr_ending_points(inputs):
     sys.path.append(
-            os.path.abspath('../combine_pred/models/simclr'))
+            os.path.abspath('../network_training/models/simclr'))
     import resnet, run
     from absl import flags
     FLAGS = flags.FLAGS
@@ -188,7 +188,7 @@ def get_network_outputs(
                 new_shape = curr_shape // 32 * 32
                 images = tf.image.resize_images(
                         images, [new_shape, new_shape])
-        import combine_pred.models.prednet_builder as prednet_builder
+        import network_training.models.prednet_builder as prednet_builder
         all_outs = prednet_builder.build_all_outs(images, _model_type)
     elif model_type == 'simclr_model':
         ending_points = get_simclr_ending_points(inputs)

@@ -14,7 +14,7 @@ import math
 
 import tensorflow as tf
 from tfutils.db_interface import verify_pb2_v2_files
-DEFAULT_MODEL_CACHE_DIR = '/mnt/fs4/chengxuz/brainscore_model_caches'
+DEFAULT_MODEL_CACHE_DIR = '/data5/chengxuz/Dataset/unsup_vvs_datasets/brainscore_model_caches'
 
 
 class TfutilsReader(object):

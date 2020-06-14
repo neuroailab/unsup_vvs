@@ -8,10 +8,10 @@ from tqdm import tqdm
 import pickle
 import os
 import sys
-sys.path.append('../combine_pred/')
+sys.path.append('../network_training/')
 import cmd_parser
 sys.path.append(os.path.abspath('./'))
-DEFAULT_RESULTCACHING_HOME = '/mnt/fs4/chengxuz/v4it_temp_results/.result_caching'
+DEFAULT_RESULTCACHING_HOME = '/data5/chengxuz/Dataset/unsup_vvs_datasets/.result_caching'
 os.environ['RESULTCACHING_HOME'] = DEFAULT_RESULTCACHING_HOME
 import importlib
 import pdb
