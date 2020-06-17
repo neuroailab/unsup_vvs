@@ -4,7 +4,6 @@ import sys
 import copy
 import pdb
 from collections import OrderedDict
-import tfutils
 from sklearn.decomposition import PCA
 from tqdm import tqdm
 import os
@@ -591,6 +590,7 @@ class ModelBuilder(object):
                 for clustering in self.LA_clusterings:
                     clustering.apply_clusters(sess, new_clust_labels)
                 self.last_clustering_step = global_step
+        import tfutils
         return tfutils.defaults.train_loop(sess, train_targets, **params)
 
     def build(self, inputs, train=True, **kwargs):

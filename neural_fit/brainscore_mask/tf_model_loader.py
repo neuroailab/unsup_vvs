@@ -13,7 +13,7 @@ import sklearn.linear_model
 import math
 
 import tensorflow as tf
-from tfutils.db_interface import verify_pb2_v2_files
+
 DEFAULT_MODEL_CACHE_DIR = '/data5/chengxuz/Dataset/unsup_vvs_datasets/brainscore_model_caches'
 
 
@@ -70,6 +70,7 @@ class TfutilsReader(object):
             tar.close()
             os.system('rm ' + path)
             path = os.path.splitext(path)[0]
+            from tfutils.db_interface import verify_pb2_v2_files
             verify_pb2_v2_files(path, rec)
         return path
 

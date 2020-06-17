@@ -169,3 +169,11 @@ def load_set_func(args):
     if args.setting_name is not None and args.load_from_ckpt is None:
         args = get_load_settings_from_func(args)
     return args
+
+
+def color_normalize(image):
+    image = tf.cast(image, tf.float32) / 255
+    imagenet_mean = np.array([0.485, 0.456, 0.406], dtype=np.float32)
+    imagenet_std = np.array([0.229, 0.224, 0.225], dtype=np.float32)
+    image = (image - imagenet_mean) / imagenet_std
+    return image

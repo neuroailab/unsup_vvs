@@ -2,7 +2,6 @@ from __future__ import division, print_function
 
 import numpy as np
 import tensorflow as tf
-from tfutils.defaults import train_loop
 
 def cluster_nn(nns):
     n = len(nns)

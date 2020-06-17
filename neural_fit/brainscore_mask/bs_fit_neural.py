@@ -26,11 +26,11 @@ from model_tools.activations.tensorflow import TensorflowSlimWrapper
 from model_tools.brain_transformation import LayerScores
 from model_tools.activations.pca import LayerPCA
 import brainscore.benchmarks as bench
-from tfutils.imagenet_data import color_normalize
 from model_tools.brain_transformation import ProbabilitiesMapping
 
 from brainscore_mask.bs_fit_utils \
         import get_dc_model, load_set_func, get_load_settings_from_func
+from brainscore_mask.bs_fit_utils import color_normalize
 import brainscore_mask.bs_fit_utils as bs_fit_utils
 from cleaned_network_builder import get_network_outputs
 from brainscore_mask import tf_model_loader
@@ -594,6 +594,7 @@ class ScoreVMModels:
         model_scores = LayerScores(
                 self.identifier, 
                 activations_model=self.activations_model,
+                visual_degrees=8,
                 )
         score = model_scores(
                 benchmark=self.benchmark, 

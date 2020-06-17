@@ -4,8 +4,8 @@ import pdb
 import tensorflow as tf
 from argparse import Namespace
 from collections import OrderedDict
+from brainscore_mask.bs_fit_utils import color_normalize
 
-from tfutils.imagenet_data import color_normalize
 sys.path.append(os.path.abspath('..'))
 sys.path.append(os.path.abspath('../network_training')) # needed for inside imports
 sys.path.append(os.path.abspath('../network_training/models')) # needed for inside imports

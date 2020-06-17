@@ -4,6 +4,13 @@ def cate_seed0(args):
     return args
 
 
+def cate_seed0_ckpt(args):
+    args.setting_name = 'cate_res18_exp0'
+    args.load_from_ckpt = '/mnt/fs4/chengxuz/brainscore_model_caches/cate_aug/res18/exp_seed0/checkpoint-505505'
+    args.identifier = 'cate-seed0-ckpt'
+    return args
+
+
 def cate_seed1(args):
     args.load_step = 505505
     args.setting_name = 'cate_res18_exp1'
