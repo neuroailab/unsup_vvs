@@ -1,3 +1,6 @@
+import os
+
+
 def cate_seed0(args):
     args.load_step = 505505
     args.setting_name = 'cate_res18_exp0'
@@ -6,7 +9,8 @@ def cate_seed0(args):
 
 def cate_seed0_ckpt(args):
     args.setting_name = 'cate_res18_exp0'
-    args.load_from_ckpt = '/mnt/fs4/chengxuz/brainscore_model_caches/cate_aug/res18/exp_seed0/checkpoint-505505'
+    args.load_from_ckpt = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..',
+                                                       'checkpoint-505505/checkpoint-505505'))
     args.identifier = 'cate-seed0-ckpt'
     return args
 

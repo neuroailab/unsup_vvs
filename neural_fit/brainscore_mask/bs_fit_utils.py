@@ -14,7 +14,7 @@ import json
 from collections import OrderedDict
 
 sys.path.append('../combine_pred/')
-import cmd_parser
+from network_training import cmd_parser
 
 # Color conversion code
 def rgb2xyz(rgb): # rgb from [0,1]

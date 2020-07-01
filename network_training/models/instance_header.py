@@ -4,10 +4,10 @@ import numpy as np
 import tensorflow as tf
 import copy
 import pdb
-from models.instance_task.model.memory_bank import MemoryBank 
-from models.instance_task.model.instance_model import InstanceModel
-from models.instance_task.model.cluster_lbl import get_clstr_labels_and_index
-from models.instance_task.model.self_loss import DATA_LEN_IMAGENET_FULL
+from network_training.models.instance_task.model.memory_bank import MemoryBank
+from network_training.models.instance_task.model.instance_model import InstanceModel
+from network_training.models.instance_task.model.cluster_lbl import get_clstr_labels_and_index
+from network_training.models.instance_task.model.self_loss import DATA_LEN_IMAGENET_FULL
 
 INSTANCE_Z_DEFAULT = 2876934.2
 

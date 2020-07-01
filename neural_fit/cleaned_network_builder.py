@@ -4,12 +4,12 @@ import pdb
 import tensorflow as tf
 from argparse import Namespace
 from collections import OrderedDict
-from brainscore_mask.bs_fit_utils import color_normalize
+from neural_fit.brainscore_mask.bs_fit_utils import color_normalize
 
 sys.path.append(os.path.abspath('..'))
 sys.path.append(os.path.abspath('../network_training')) # needed for inside imports
 sys.path.append(os.path.abspath('../network_training/models')) # needed for inside imports
-from models.model_blocks import NoramlNetfromConv
+from network_training.models.model_blocks import NoramlNetfromConv
 import network_training.cmd_parser as cmd_parser
 from network_training.models.config_parser import get_network_cfg
 from network_training.models.model_builder import ModelBuilder

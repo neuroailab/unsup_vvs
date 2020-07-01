@@ -9,7 +9,7 @@ import pickle
 import os
 import sys
 sys.path.append('../network_training/')
-import cmd_parser
+from network_training import cmd_parser
 sys.path.append(os.path.abspath('./'))
 DEFAULT_RESULTCACHING_HOME = '/data5/chengxuz/Dataset/unsup_vvs_datasets/.result_caching'
 os.environ['RESULTCACHING_HOME'] = DEFAULT_RESULTCACHING_HOME
@@ -28,27 +28,27 @@ from model_tools.activations.pca import LayerPCA
 import brainscore.benchmarks as bench
 from model_tools.brain_transformation import ProbabilitiesMapping
 
-from brainscore_mask.bs_fit_utils \
+from bs_fit_utils \
         import get_dc_model, load_set_func, get_load_settings_from_func
-from brainscore_mask.bs_fit_utils import color_normalize
-import brainscore_mask.bs_fit_utils as bs_fit_utils
-from cleaned_network_builder import get_network_outputs
-from brainscore_mask import tf_model_loader
-from brainscore_mask.param_search_neural import \
+from bs_fit_utils import color_normalize
+import bs_fit_utils as bs_fit_utils
+from neural_fit.cleaned_network_builder import get_network_outputs
+import tf_model_loader
+from param_search_neural import \
         LayerParamScores, ParamScores, LayerActivations, \
         LayerModel, LayerRegressParamScores, RegressParamScores
-from brainscore_mask.majaj2015_mask import \
+from majaj2015_mask import \
         DicarloMajaj2015ITLowMidVarMask, DicarloMajaj2015V4LowMidVarMask
-from brainscore_mask.majaj2015_mask import \
+from majaj2015_mask import \
         DicarloMajaj2015ITMaskParams, DicarloMajaj2015V4MaskParams
-from brainscore_mask.cadena2017_mask import \
+from cadena2017_mask import \
         ToliasCadena2017MaskParams, ToliasCadena2017MaskParamsCadenaScores, \
         ToliasCadena2017WithNaNsMaskParams, ToliasCadena2017CadenaFitCadenaScores, \
         ToliasCadena2017Correlation
-from brainscore_mask.majaj2015_mask import \
+from majaj2015_mask import \
         DicarloMajaj2015TransRegLowMidVar, DicarloMajaj2015TransRegHighVar
-import brainscore_mask.behavior_bench as bhv_bench 
-import brainscore_mask.majaj2015_mask as majaj2015_bench
+import behavior_bench as bhv_bench
+import majaj2015_mask as majaj2015_bench
 DEFAULT_PARAMS = {
         'with_corr_loss': True,
         'with_lap_loss': False,

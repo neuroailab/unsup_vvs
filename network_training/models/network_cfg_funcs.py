@@ -1,5 +1,5 @@
-from models.network_cfg_scripts.vgg_funcs import get_vgg16
-from models.network_cfg_scripts.shared_funcs import get_category, \
+from network_training.models.network_cfg_scripts.vgg_funcs import get_vgg16
+from network_training.models.network_cfg_scripts.shared_funcs import get_category, \
         get_category_pool_stride7, get_resnet_layer1, \
         get_resnet_basicblock_one_layer, get_resnet_bottleblock_one_layer, \
         get_resnet_basicblock, get_resnet_bottleblock, \
