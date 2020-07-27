@@ -320,11 +320,11 @@ class ScoreVMModels:
         return ending_points
 
     def _get_brainscore_model(self, id_suffix=None):
-        from candidate_models.model_commitments.ml_pool import model_layers_pool
+        from candidate_models.model_commitments \
+                import base_model_pool, model_layers
         _id = self.args.bs_models_id
-        model_layers = model_layers_pool[_id]
-        self.activations_model = model_layers['model']
-        self.layers = model_layers['layers']
+        self.activations_model = base_model_pool[_id]
+        self.layers = model_layers[_id]
         self.identifier = 'brainscore-' + _id
         if self.args.id_suffix:
             self.identifier += '-' + self.args.id_suffix

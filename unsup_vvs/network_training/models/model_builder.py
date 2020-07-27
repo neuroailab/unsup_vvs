@@ -12,14 +12,14 @@ try:
 except:
     import cPickle as pickle
 
-import models.rp_col_utils as rc_utils
-from models.rp_col_utils import rgb_to_lab
-from models.mean_teacher_utils import ema_variable_scope, name_variable_scope
-from models.model_blocks import NoramlNetfromConv
-from models.config_parser import ConfigParser, get_network_cfg
-from models.instance_header import InstanceHeader, InstClstrHeader, LAHeader
-from models.instance_task.model.resnet_th_preprocessing import ApplySobel
-import models.cpc_utils as cpc_utils
+import unsup_vvs.network_training.models.rp_col_utils as rc_utils
+from unsup_vvs.network_training.models.rp_col_utils import rgb_to_lab
+from unsup_vvs.network_training.models.mean_teacher_utils import ema_variable_scope, name_variable_scope
+from unsup_vvs.network_training.models.model_blocks import NoramlNetfromConv
+from unsup_vvs.network_training.models.config_parser import ConfigParser, get_network_cfg
+from unsup_vvs.network_training.models.instance_header import InstanceHeader, InstClstrHeader, LAHeader
+from unsup_vvs.network_training.models.instance_task.model.resnet_th_preprocessing import ApplySobel
+import unsup_vvs.network_training.models.cpc_utils as cpc_utils
 
 
 DATASET_PREFIX_LIST = [

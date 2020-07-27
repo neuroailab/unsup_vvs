@@ -3,7 +3,7 @@ import os
 import copy
 import importlib
 import pdb
-import models.network_cfg_funcs as network_cfg_funcs
+import unsup_vvs.network_training.models.network_cfg_funcs as network_cfg_funcs
 
 
 def postprocess_config(cfg):

@@ -1,4 +1,4 @@
-from exp_settings.shared_settings import basic_setting, basic_mean_teacher, \
+from unsup_vvs.network_training.exp_settings.shared_settings import basic_setting, basic_mean_teacher, \
         bs_128_setting, basic_inst_setting, basic_cate_setting, \
         basic_res18, mt_fst_ramp_down_setting
 

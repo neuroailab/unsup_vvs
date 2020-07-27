@@ -1,5 +1,5 @@
 import argparse
-from exp_settings.utils import get_setting_func
+from unsup_vvs.network_training.exp_settings.utils import get_setting_func
 
 
 def add_general_setting(parser):
