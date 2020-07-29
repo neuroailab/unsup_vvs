@@ -1,6 +1,6 @@
 import brainscore
 from brainscore.benchmarks._neural_common import NeuralBenchmark, average_repetition
-from brainscore.benchmarks.majaj2015 import _DicarloMajaj2015Region, load_assembly
+from brainscore.benchmarks.majajhong2015 import _DicarloMajajHong2015Region, load_assembly
 from brainscore.metrics.ceiling import InternalConsistency, RDMConsistency
 from brainscore.metrics.rdm import RDMCrossValidated
 from brainscore.metrics.regression import CrossRegressedCorrelation, mask_regression, ScaledCrossRegressedCorrelation, \

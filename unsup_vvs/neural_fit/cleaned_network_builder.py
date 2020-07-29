@@ -1,31 +1,25 @@
 import os
 import sys
-import pdb
 import tensorflow as tf
 from argparse import Namespace
 from collections import OrderedDict
-from neural_fit.brainscore_mask.bs_fit_utils import color_normalize
+from unsup_vvs.neural_fit.brainscore_mask.bs_fit_utils import color_normalize
 
-sys.path.append(os.path.abspath('..'))
-sys.path.append(os.path.abspath('../network_training')) # needed for inside imports
-sys.path.append(os.path.abspath('../network_training/models')) # needed for inside imports
-from network_training.models.model_blocks import NoramlNetfromConv
-import network_training.cmd_parser as cmd_parser
-from network_training.models.config_parser import get_network_cfg
-from network_training.models.model_builder import ModelBuilder
-from network_training.models.rp_col_utils import rgb_to_lab
-from network_training.models.mean_teacher_utils import \
+from unsup_vvs.network_training.models.model_blocks import NoramlNetfromConv
+import unsup_vvs.network_training.cmd_parser as cmd_parser
+from unsup_vvs.network_training.models.config_parser import get_network_cfg
+from unsup_vvs.network_training.models.model_builder import ModelBuilder
+from unsup_vvs.network_training.models.rp_col_utils import rgb_to_lab
+from unsup_vvs.network_training.models.mean_teacher_utils import \
         ema_variable_scope, name_variable_scope
-from network_training.models.instance_task.model.instance_model \
+from unsup_vvs.network_training.models.instance_task.model.instance_model \
         import resnet_embedding
 
 MEAN_RGB = [0.485, 0.456, 0.406]
 
 
 def get_simclr_ending_points(inputs):
-    sys.path.append(
-            os.path.abspath('../network_training/models/simclr'))
-    import resnet, run
+    from unsup_vvs.network_training.models.simclr import resnet, run
     from absl import flags
     FLAGS = flags.FLAGS
     FLAGS(['none'])
