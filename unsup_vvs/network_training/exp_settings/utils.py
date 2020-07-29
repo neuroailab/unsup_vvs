@@ -1,4 +1,4 @@
-from network_training import saved_setting
+from unsup_vvs.network_training import saved_setting
 import importlib
 
 

@@ -13,8 +13,7 @@ import numpy as np
 import json
 from collections import OrderedDict
 
-sys.path.append('../combine_pred/')
-from network_training import cmd_parser
+import unsup_vvs.network_training.cmd_parser
 
 # Color conversion code
 def rgb2xyz(rgb): # rgb from [0,1]
