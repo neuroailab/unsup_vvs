@@ -185,7 +185,7 @@ def get_network_outputs(
                 new_shape = curr_shape // 32 * 32
                 images = tf.image.resize_images(
                         images, [new_shape, new_shape])
-        import network_training.models.prednet_builder as prednet_builder
+        import unsup_vvs.network_training.models.prednet_builder as prednet_builder
         all_outs = prednet_builder.build_all_outs(images, _model_type)
     elif model_type == 'simclr_model':
         ending_points = get_simclr_ending_points(inputs)

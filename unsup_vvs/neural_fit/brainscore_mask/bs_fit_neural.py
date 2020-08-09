@@ -399,7 +399,7 @@ class ScoreVMModels:
         self.model = model.module.l_to_ab
 
         def _do_resize_lab_normalize(images, img_size):
-            from pt_scripts.main import tolab_normalize
+            from unsup_vvs.neural_fit.pt_scripts.main import tolab_normalize
             from PIL import Image
             post_images = []
             for image in images:

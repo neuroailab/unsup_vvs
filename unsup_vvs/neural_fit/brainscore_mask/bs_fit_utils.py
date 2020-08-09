@@ -64,8 +64,7 @@ def xyz2lab(xyz):
 
 
 def get_la_cmc_model(path):
-    sys.path.append(os.path.expanduser('~/RotLocalAggregation'))
-    from src.models.resnet import ResNetLabV1
+    from unsup_vvs.neural_fit.pt_scripts.la_cmc_resnet import ResNetLabV1
     model = ResNetLabV1(skip_final_layer=True, before_pool=True)
     model = torch.nn.DataParallel(model)
     if torch.cuda.is_available():
@@ -83,8 +82,7 @@ def get_la_cmc_model(path):
 
 
 def get_dc_model(path, verbose=True):
-    sys.path.append(os.path.expanduser('~/deepcluster/models'))
-    import resnet18_dc
+    import unsup_vvs.neural_fit.pt_scripts.resnet18_dc as resnet18_dc
     if verbose:
         print("=> loading checkpoint '{}'".format(path))
     checkpoint = torch.load(path)
