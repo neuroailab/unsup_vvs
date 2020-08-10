@@ -1,4 +1,4 @@
-import exp_settings.shared_settings as shared_sts
+import unsup_vvs.network_training.exp_settings.shared_settings as shared_sts
 from tensorflow.python import pywrap_tensorflow
 import json
 
