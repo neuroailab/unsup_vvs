@@ -130,9 +130,10 @@ def resnet_embedding(img_batch, dtype=tf.float32,
             return all_mid_layers
 
         if get_all_layers:
-            _, ending_points = model(
+            final_dense, ending_points = model(
                     image, train, get_all_layers=get_all_layers)
             all_layers = get_resnet_all_layers(ending_points, get_all_layers)
+            all_layers['final_dense'] = final_dense
             return all_layers
 
         model_out = model(image, train, skip_final_dense=False)
