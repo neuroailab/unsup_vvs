@@ -114,7 +114,7 @@ def batch_norm_relu(inputs, is_training, relu=True, init_zero=False,
   else:
     axis = 3
 
-  if FLAGS.global_bn:
+  if hasattr(FLAGS, 'global_bn') and FLAGS.global_bn:
     bn_foo = BatchNormalization(
         axis=axis,
         momentum=FLAGS.batch_norm_decay,
@@ -128,7 +128,7 @@ def batch_norm_relu(inputs, is_training, relu=True, init_zero=False,
     inputs = tf.layers.batch_normalization(
         inputs=inputs,
         axis=axis,
-        momentum=FLAGS.batch_norm_decay,
+        momentum=FLAGS.batch_norm_decay if hasattr(FLAGS, 'batch_norm_decay') else .99,
         epsilon=BATCH_NORM_EPSILON,
         center=center,
         scale=scale,
@@ -520,7 +520,8 @@ def resnet_v1_generator(block_fn, layers, width_multiplier,
 
     trainable_variables = {}
     filter_trainable_variables(trainable_variables, after_block=0)
-    if FLAGS.train_mode == 'finetune' and FLAGS.fine_tune_after_block == 0:
+    if hasattr(FLAGS, 'train_mode') and FLAGS.train_mode == 'finetune' and \
+            hasattr(FLAGS, 'fine_tune_after_block') and FLAGS.fine_tune_after_block == 0:
       inputs = tf.stop_gradient(inputs)
 
     inputs = block_group(
@@ -531,7 +532,8 @@ def resnet_v1_generator(block_fn, layers, width_multiplier,
         dropblock_size=dropblock_size)
 
     filter_trainable_variables(trainable_variables, after_block=1)
-    if FLAGS.train_mode == 'finetune' and FLAGS.fine_tune_after_block == 1:
+    if hasattr(FLAGS, 'train_mode') and FLAGS.train_mode == 'finetune' and \
+            hasattr(FLAGS, 'fine_tune_after_block') and FLAGS.fine_tune_after_block == 1:
       inputs = tf.stop_gradient(inputs)
 
     inputs = block_group(
@@ -542,7 +544,8 @@ def resnet_v1_generator(block_fn, layers, width_multiplier,
         dropblock_size=dropblock_size)
 
     filter_trainable_variables(trainable_variables, after_block=2)
-    if FLAGS.train_mode == 'finetune' and FLAGS.fine_tune_after_block == 2:
+    if hasattr(FLAGS, 'train_mode') and FLAGS.train_mode == 'finetune' \
+            and hasattr(FLAGS, 'fine_tune_after_block') and FLAGS.fine_tune_after_block == 2:
       inputs = tf.stop_gradient(inputs)
 
     inputs = block_group(
@@ -553,7 +556,8 @@ def resnet_v1_generator(block_fn, layers, width_multiplier,
         dropblock_size=dropblock_size)
 
     filter_trainable_variables(trainable_variables, after_block=3)
-    if FLAGS.train_mode == 'finetune' and FLAGS.fine_tune_after_block == 3:
+    if hasattr(FLAGS, 'train_mode') and FLAGS.train_mode == 'finetune' and \
+            hasattr(FLAGS, 'fine_tune_after_block') and FLAGS.fine_tune_after_block == 3:
       inputs = tf.stop_gradient(inputs)
 
     inputs = block_group(
@@ -564,7 +568,8 @@ def resnet_v1_generator(block_fn, layers, width_multiplier,
         dropblock_size=dropblock_size)
 
     filter_trainable_variables(trainable_variables, after_block=4)
-    if FLAGS.train_mode == 'finetune' and FLAGS.fine_tune_after_block == 4:
+    if hasattr(FLAGS, 'train_mode') and FLAGS.train_mode == 'finetune' and \
+            hasattr(FLAGS, 'fine_tune_after_block') and FLAGS.fine_tune_after_block == 4:
       inputs = tf.stop_gradient(inputs)
 
     if drop_final_pool:
