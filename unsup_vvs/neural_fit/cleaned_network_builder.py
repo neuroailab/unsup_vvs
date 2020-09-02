@@ -1,6 +1,5 @@
 import os
 import sys
-import pdb
 import tensorflow as tf
 from argparse import Namespace
 from collections import OrderedDict
@@ -20,9 +19,7 @@ MEAN_RGB = [0.485, 0.456, 0.406]
 
 
 def get_simclr_ending_points(inputs):
-    sys.path.append(
-            os.path.abspath('../network_training/models/simclr'))
-    import resnet, run
+    from unsup_vvs.network_training.models.simclr import resnet
     from absl import flags
     FLAGS = flags.FLAGS
     FLAGS(['none'])

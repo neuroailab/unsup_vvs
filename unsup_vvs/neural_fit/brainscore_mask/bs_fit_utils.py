@@ -71,7 +71,7 @@ def get_la_cmc_model(path):
         model = model.cuda()
         cudnn.benchmark = True
 
-    checkpoint = torch.load(path)
+    checkpoint = torch.load(path, map_location=lambda storage, location: storage)
     model.load_state_dict(checkpoint['model_state_dict'])
 
     # freeze the layers
@@ -85,7 +85,7 @@ def get_dc_model(path, verbose=True):
     import unsup_vvs.neural_fit.pt_scripts.resnet18_dc as resnet18_dc
     if verbose:
         print("=> loading checkpoint '{}'".format(path))
-    checkpoint = torch.load(path)
+    checkpoint = torch.load(path, map_location=lambda storage, location: storage)
 
     # size of the top layer
     N = checkpoint['state_dict']['top_layer.bias'].size()
@@ -108,8 +108,9 @@ def get_dc_model(path, verbose=True):
     model.load_state_dict(checkpoint['state_dict'])
     if verbose:
         print("Loaded")
-    model.cuda()
-    cudnn.benchmark = True
+    if torch.cuda.is_available():
+        model.cuda()
+        cudnn.benchmark = True
 
     # freeze the features layers
     for param in model.features.parameters():
