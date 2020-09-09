@@ -8,6 +8,7 @@ import numpy as np
 import os
 from tqdm import tqdm
 import torch.nn as nn
+from skimage import color
 try:
     import cPickle
     pickle = cPickle
@@ -77,11 +78,18 @@ def load_model_class(args):
     return model_class
 
 
+class RGB2Lab(object):
+    """Convert RGB PIL image to ndarray Lab."""
+    def __call__(self, img):
+        img = np.asarray(img, np.uint8)
+        img = color.rgb2lab(img)
+        img = img.astype(np.float32)
+        return img
+
+
 LAB_MEAN = [(0 + 100) / 2, (-86.183 + 98.233) / 2, (-107.857 + 94.478) / 2]
 LAB_STD = [(100 - 0) / 2, (86.183 + 98.233) / 2, (107.857 + 94.478) / 2]
 def tolab_normalize(img):
-    sys.path.append(os.path.expanduser('~/RotLocalAggregation/'))
-    from src.datasets.imagenet import RGB2Lab
     _RGB2Lab = RGB2Lab()
     img = _RGB2Lab(img)
     img -= LAB_MEAN

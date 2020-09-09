@@ -5,12 +5,11 @@ import numpy as np
 import os
 import sys
 import torch.nn as nn
-sys.path.append(os.path.expanduser('~/RotLocalAggregation/'))
 
 
 class LACMCV1Model(object):
     def __init__(self, model_ckpt):
-        from src.models.resnet import ResNetLabV1
+        from unsup_vvs.neural_fit.pt_scripts.la_cmc_resnet import ResNetLabV1
         # TODO: change this to a parameter
         model = ResNetLabV1()
         model = torch.nn.DataParallel(model)

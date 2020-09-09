@@ -1,10 +1,9 @@
 import tensorflow as tf
 from argparse import Namespace
-from models.model_blocks import NoramlNetfromConv
 import sys, os
 import pdb
-sys.path.append(os.path.expanduser('~/video_unsup/'))
-import tf_model.prednet.prednet as prednet
+import unsup_vvs.network_training.models.prednet as prednet
+from unsup_vvs.network_training.models.model_blocks import NoramlNetfromConv
 from collections import OrderedDict
 
 
