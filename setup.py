@@ -8,6 +8,7 @@ with open('README.md') as readme_file:
 
 requirements = [
     'dotmap',  # for cmc
+    'scikit-image',  # for cmc
 ]
 
 setup(
