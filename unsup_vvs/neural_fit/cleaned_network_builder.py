@@ -74,14 +74,14 @@ def get_network_cfg_from_setting(setting_name=None, **kwargs):
     return network_cfg, train_args
 
 
-def build_vm_model_from_args(args, post_input_image, module_name=['encode']):
+def build_vm_model_from_args(args, post_input_image, module_name=['encode'], train=False):
     model_builder = ModelBuilder(args, {})
 
     # Preparations before building one module
     model_builder.dataset_prefix = 'imagenet'
     model_builder.reuse_dict = {}
     model_builder.init_model_block_class()
-    model_builder.train = False
+    model_builder.train = train
     model_builder.all_out_dict = {}
     model_builder.outputs_dataset = OrderedDict()
     model_builder.save_layer_middle_output = True
@@ -98,6 +98,7 @@ def get_network_outputs(
         setting_name=None,
         module_name=['encode'],
         inst_resnet_size=18,
+        train=False,
         **cfg_kwargs):
     input_image = inputs['images']
     if prep_type == 'only_mean':
@@ -118,16 +119,16 @@ def get_network_outputs(
 
     if model_type == 'vm_model':
         network_cfg, args = get_network_cfg_from_setting(setting_name, **cfg_kwargs)
-        all_outs = build_vm_model_from_args(args, post_input_image, module_name)
+        all_outs = build_vm_model_from_args(args, post_input_image, module_name, train=train)
     elif model_type == 'mt_vm_model':
         network_cfg, args = get_network_cfg_from_setting(setting_name, **cfg_kwargs)
         with name_variable_scope("primary", "primary", reuse=tf.AUTO_REUSE) \
                 as (name_scope, var_scope):
             all_outs = build_vm_model_from_args(
-                    args, post_input_image, module_name)
+                    args, post_input_image, module_name, train=train)
         with ema_variable_scope("ema", var_scope, reuse=tf.AUTO_REUSE):
             ema_out_dict = build_vm_model_from_args(
-                    args, post_input_image, module_name)
+                    args, post_input_image, module_name, train=train)
             # Combine two out dicts, adding ema_ as prefix to keys
             for each_key, each_value in ema_out_dict.items():
                 new_key = "ema_%s" % each_key
