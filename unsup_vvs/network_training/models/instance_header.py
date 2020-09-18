@@ -351,7 +351,7 @@ class LAHeader(object):
                 "all_labels": self.all_labels,
                 'data_indx': self.inputs['index'],
                 }
-        from models.instance_task.model.cluster_km import Kmeans
+        from unsup_vvs.network_training.models.instance_task.model.cluster_km import Kmeans
         clustering = Kmeans(
                 self.LA_kmeans, self.memory_bank, self.cluster_labels)
         return ret_dict, clustering

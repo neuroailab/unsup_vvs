@@ -24,7 +24,7 @@ import numpy as np
 import pdb
 from tensorflow.python.ops import control_flow_ops
 
-from models.rp_col_utils import rgb_to_lab, ab_to_Q
+from unsup_vvs.network_training.models.rp_col_utils import rgb_to_lab, ab_to_Q
 
 
 slim = tf.contrib.slim

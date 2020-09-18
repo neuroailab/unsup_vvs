@@ -11,8 +11,8 @@ import copy
 import utils
 import pdb
 
-from cmd_parser import get_parser, load_setting
-from param_setter import ParamSetter
+from unsup_vvs.network_training.cmd_parser import get_parser, load_setting
+from unsup_vvs.network_training.param_setter import ParamSetter
 
 
 def main():

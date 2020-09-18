@@ -6,22 +6,22 @@ import copy
 import pdb
 import json
 
-from utilities.data_path_utils import which_imagenet_map, \
+from unsup_vvs.network_training.utilities.data_path_utils import which_imagenet_map, \
         get_data_path, \
         get_TPU_data_path
-from models.rp_col_utils import rgb_to_lab, ab_to_Q, \
+from unsup_vvs.network_training.models.rp_col_utils import rgb_to_lab, ab_to_Q, \
         pos2lbl, lab_to_rgb, Q_to_ab
-from models.tpu_loss_utils import metric_fn, rp_metric_fn, depth_metric_fn, \
+from unsup_vvs.network_training.models.tpu_loss_utils import metric_fn, rp_metric_fn, depth_metric_fn, \
         combine_depth_imn_metric_fn, col_metric_fn, tpu_instance_metric_fn, \
         combine_rp_imn_metric_fn, tpu_imagenet_loss, tpu_rp_imagenet_loss, \
         tpu_col_loss, tpu_depth_loss, combine_depth_imn_loss, \
         combine_rp_imn_loss, tpu_mean_teacher_metric_fn, \
         tpu_mean_teacher_loss
-from models.loss_utils import instance_loss, get_cons_coefficient, \
+from unsup_vvs.network_training.models.loss_utils import instance_loss, get_cons_coefficient, \
         sigmoid_rampup, mean_teacher_consitence_and_res
-from models.mean_teacher_utils import rampup_rampdown_lr, \
+from unsup_vvs.network_training.models.mean_teacher_utils import rampup_rampdown_lr, \
         name_variable_scope, ema_variable_scope
-from models.config_parser import get_network_cfg, postprocess_config
+from unsup_vvs.network_training.models.config_parser import get_network_cfg, postprocess_config
 
 
 def get_val_target(cfg_dataset):

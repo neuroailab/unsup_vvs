@@ -6,9 +6,9 @@ import pdb
 import json
 import collections
 
-from models.instance_header import get_instance_softmax
-import models.rp_col_utils as rc_utils
-import models.model_builder as m_builder
+from unsup_vvs.network_training.models.instance_header import get_instance_softmax
+import unsup_vvs.network_training.models.rp_col_utils as rc_utils
+import unsup_vvs.network_training.models.model_builder as m_builder
 
 
 def get_ln_data(data_dist, instance_k, instance_data_len, eps=1e-7):
@@ -763,6 +763,7 @@ class LossBuilder(object):
                 or self.__need_prefix_instance('imagenet_un') \
                 or self.__need_prefix_instance('imagenet_branch2') \
                 or self.__need_prefix_instance('saycam'):
+            curr_out_dict = None
             if (not self.inst_cate_sep and not self.mean_teacher) \
                and self.__need_prefix_instance('imagenet'):
                 curr_out_dict = self.outputs['imagenet']
@@ -779,6 +780,9 @@ class LossBuilder(object):
             if self.__need_prefix_instance('saycam'):
                 curr_out_dict = self.outputs['saycam']
                 data_label = self.inputs['label_saycam']
+            if (curr_out_dict is None) and ('imagenet' in self.outputs): 
+                curr_out_dict = self.outputs['imagenet']
+                data_label = self.inputs['label_imagenet']
             curr_out_dict = curr_out_dict['instance']
 
             loss_model, loss_noise = self.__get_inst_loss_with_updates(

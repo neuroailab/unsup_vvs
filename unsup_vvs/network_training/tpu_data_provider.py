@@ -9,11 +9,11 @@ import copy
 
 import tensorflow as tf
 
-import resnet_preprocessing as resnet_preprocessing
 import pdb
 
-from utils import rgb_to_lab
-import resnet_th_preprocessing as prep_util
+import unsup_vvs.network_training.resnet_preprocessing as resnet_preprocessing
+from unsup_vvs.network_training.utils import rgb_to_lab
+import unsup_vvs.network_training.resnet_th_preprocessing as prep_util
 
 
 # Useful util function

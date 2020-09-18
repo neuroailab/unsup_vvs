@@ -7,9 +7,9 @@ import tensorflow as tf
 import os, sys
 import numpy as np
 import pdb
-from utils import rgb_to_lab, ab_to_Q
 
-from resnet_preprocessing import _at_least_x_are_true, \
+from unsup_vvs.network_training.utils import rgb_to_lab, ab_to_Q
+from unsup_vvs.network_training.resnet_preprocessing import _at_least_x_are_true, \
         _center_crop, _do_scale, _aspect_preserving_resize, \
         _central_crop
 

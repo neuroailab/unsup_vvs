@@ -1,9 +1,10 @@
 import tensorflow as tf
-from models.loss_utils import get_cons_coefficient, mean_teacher_consitence_and_res, \
-        instance_loss
 import numpy as np
-from models.rp_col_utils import pos2lbl
 import pdb
+
+from unsup_vvs.network_training.models.loss_utils import get_cons_coefficient, mean_teacher_consitence_and_res, \
+        instance_loss
+from unsup_vvs.network_training.models.rp_col_utils import pos2lbl
 
 
 def metric_fn(labels, logits, **kwargs):

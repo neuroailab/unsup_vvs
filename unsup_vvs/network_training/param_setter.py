@@ -6,19 +6,18 @@ from tfutils import base
 
 import json
 import copy
-import utils
 import pdb
 
-import optimizer
-from tpu_data_provider import TPUCombineWorld as CombineWorldDataset
-import tpu_dp_params
-from cmd_parser import get_parser, load_setting
-import utilities.data_path_utils as data_path_utils
-import models.tpu_loss_utils as tpu_loss_utils 
-from models.loss_utils import LossBuilder
-import models.config_parser as model_cfg_parser
-from models.mean_teacher_utils import rampup_rampdown_lr
-from models.model_builder import ModelBuilder
+import unsup_vvs.network_training.utils as utils
+import unsup_vvs.network_training.optimizer as optimizer
+from unsup_vvs.network_training.tpu_data_provider import TPUCombineWorld as CombineWorldDataset
+from unsup_vvs.network_training.cmd_parser import get_parser, load_setting
+import unsup_vvs.network_training.utilities.data_path_utils as data_path_utils
+import unsup_vvs.network_training.models.tpu_loss_utils as tpu_loss_utils 
+from unsup_vvs.network_training.models.loss_utils import LossBuilder
+import unsup_vvs.network_training.models.config_parser as model_cfg_parser
+from unsup_vvs.network_training.models.mean_teacher_utils import rampup_rampdown_lr
+from unsup_vvs.network_training.models.model_builder import ModelBuilder
 
 
 class ParamSetter(object):
@@ -277,6 +276,7 @@ class ParamSetter(object):
         return model_params
 
     def _get_tpu_dp_params(self):
+        import unsup_vvs.network_training.tpu_dp_params as tpu_dp_params
         args = self.args
 
         self.tpu_gnrl_dp_tasks = [
@@ -546,6 +546,7 @@ class ParamSetter(object):
         return self.topn_val_data_param
 
     def _get_val_tpu_topn_data_params(self):
+        import unsup_vvs.network_training.tpu_dp_params as tpu_dp_params
         args = self.args
 
         val_batch_size = args.batchsize
