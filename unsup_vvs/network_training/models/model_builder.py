@@ -200,6 +200,8 @@ class ModelBuilder(object):
                 seed=seed,
                 global_weight_decay=self.args.global_weight_decay,
                 enable_bn_weight_decay=self.args.enable_bn_weight_decay,
+                overwrite_bn_train=getattr(
+                    self.args, 'overwrite_bn_train', None),
                 )
 
     def __reset_model_block_class(self):

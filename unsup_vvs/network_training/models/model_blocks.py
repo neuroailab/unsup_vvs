@@ -16,6 +16,7 @@ class ConvNet(object):
             conv2d_data_format="NHWC",
             conv2d_with_bias=True,
             enable_bn_weight_decay=False,
+            overwrite_bn_train=None,
             **kwargs):
         self.seed = seed
         self.output = None
@@ -28,6 +29,7 @@ class ConvNet(object):
         self.conv2d_data_format = conv2d_data_format
         self.conv2d_with_bias = conv2d_with_bias
         self.enable_bn_weight_decay = enable_bn_weight_decay
+        self.overwrite_bn_train = overwrite_bn_train
 
     @property
     def params(self):
@@ -90,11 +92,14 @@ class ConvNet(object):
             beta_regularizer = tf.contrib.layers.l2_regularizer(weight_decay)
             gamma_regularizer = tf.contrib.layers.l2_regularizer(weight_decay)
 
+        training = is_training
+        if self.overwrite_bn_train is not None:
+            training = self.overwrite_bn_train
         self.output = tf.layers.batch_normalization(
                 inputs=inputs, axis=axis,
                 momentum=decay, epsilon=epsilon, 
                 center=True, scale=True, 
-                training=is_training, fused=True, 
+                training=training, fused=True, 
                 trainable=sm_bn_trainable,
                 beta_regularizer=beta_regularizer,
                 gamma_regularizer=gamma_regularizer,
