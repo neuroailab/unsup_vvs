@@ -83,6 +83,10 @@ class InstanceHeader(object):
                         'shape':(self.instance_data_len),
                         }
             else:
+                try:
+                    import cPickle
+                except:
+                    import pickle as cPickle
                 label_init = cPickle.load(open(self.instance_lbl_pkl, 'r'))
                 label_init = label_init.astype(np.int64)
                 all_label_kwarg = {}
