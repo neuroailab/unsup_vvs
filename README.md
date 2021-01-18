@@ -8,6 +8,9 @@ We use python=3.7.4.
 
 # Instructions
 
+The reproduction is done in three steps: preparing datasets needed for training, training networks, evaluating the trained networks using neural data.
+
 To prepare datasets, see scripts in `prepare_datasets`.
-For neural network training, see scripts in `network_training` folder.  
-For neural data evaluation, see scripts in `neural_fit` folder.
+To run the following two steps, you need to first install this package (like `pip install -e ./`).
+For neural network training, see scripts in `unsup_vvs/network_training` folder.  
+For neural data evaluation, see scripts in `unsup_vvs/neural_fit` folder.
