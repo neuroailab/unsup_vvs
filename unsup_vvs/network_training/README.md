@@ -28,36 +28,46 @@ If the training is unexpectedly interrupted, you can just run the same command t
 
 `set_func_name` should be `supervised.super_res18_s0`, `supervised.super_res18_s1`, `supervised.super_res18_s2`, corresponding to three networks with different initializations.
 
+One of the pretrained checkpoints can be found at [link](http://visualmaster-models.s3.amazonaws.com/supervised/seed0/checkpoint-505505.tar).
+
 ## Local Aggregation
 
 `set_func_name` should be `la.res18_la_s0`, `la.res18_la_s1`, `la.res18_la_s2`. Due to an implmenetation problem, if your training is interrupted, you need to comment a sentence in the setting before resuming the training, see line 51 of `exp_settings/la.py`.
 
+One of the pretrained checkpoints can be found at [link](http://visualmaster-models.s3.amazonaws.com/la/seed1/checkpoint-2502500.tar).
 
 ## SimCLR
 
 SimCLR needs to be trained through preparing ImageNet following instructions in folder `models/simclr` and using TPUs (v3-pod-256 recommended). After preparing the dataset and building TPUs, run scripts `training_bashes/train_res18_in_0.sh`, `training_bashes/train_res18_in_1.sh`, and `training_bashes/train_res18_in_2.sh` in that folder.
 
+One of the pretrained checkpoints can be found at [link](http://visualmaster-models.s3.amazonaws.com/simclr/seed0/model.ckpt-311748.tar).
 
 ## Instance Recognition
 
 `set_func_name` should be `ir.res18_ir_s0`, `ir.res18_ir_s1`, `ir.res18_ir_s2`.
 
+One of the pretrained checkpoints can be found at [link](http://visualmaster-models.s3.amazonaws.com/ir/seed1/checkpoint-2502500.tar).
 
 ## Relative Position
 
 `set_func_name` should be `rp.res18_rp_s0`, `rp.res18_rp_s1`, `rp.res18_rp_s2`.
 
+One of the pretrained checkpoints can be found at [link](http://visualmaster-models.s3.amazonaws.com/rp/seed0/model.ckpt-1181162.tar).
 
 ## Colorization
 
 `set_func_name` should be `col.res18_col_s0`, `col.res18_col_s1`, `col.res18_col_s2`.
 
+One of the pretrained checkpoints can be found at [link](http://visualmaster-models.s3.amazonaws.com/color/seed0/model.ckpt-5605040.tar).
 
 ## CPC
 
 `set_func_name` should be `cpc.res18_cpc_s0`, `cpc.res18_cpc_s1`, `cpc.res18_cpc_s2`.
 
+One of the pretrained checkpoints can be found at [link](http://visualmaster-models.s3.amazonaws.com/cpc/seed0/model.ckpt-1301300.tar).
 
 ## Auto-Encoder
 
 `set_func_name` should be `ae.res18_ae_s0`, `ae.res18_ae_s1`, `ae.res18_ae_s2`.
+
+One of the pretrained checkpoints can be found at [link](http://visualmaster-models.s3.amazonaws.com/ae/seed0/checkpoint-1301300.tar).
