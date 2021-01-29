@@ -71,3 +71,11 @@ One of the pretrained checkpoints can be found at [link](http://visualmaster-mod
 `set_func_name` should be `ae.res18_ae_s0`, `ae.res18_ae_s1`, `ae.res18_ae_s2`.
 
 One of the pretrained checkpoints can be found at [link](http://visualmaster-models.s3.amazonaws.com/ae/seed0/checkpoint-1301300.tar).
+
+## Local Label Propagation
+
+These models were trained with this [repo](https://github.com/neuroailab/LocalLabelProp).
+The function settings used to train the models are in both this [setting file](https://github.com/neuroailab/LocalLabelProp/blob/master/saved_settings/llp_res18.py)
+and this [setting file](https://github.com/neuroailab/LocalLabelProp/blob/master/saved_settings/llp_for_vm.py).
+Check the [README](https://github.com/neuroailab/LocalLabelProp/blob/master/README.md) 
+for the meaning of the names of these functions and how to train these models.
