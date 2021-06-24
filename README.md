@@ -14,3 +14,4 @@ To prepare datasets, see scripts in `prepare_datasets`.
 To run the following two steps, you need to first install this package (like `pip install -e ./`).
 For neural network training, see scripts in `unsup_vvs/network_training` folder.  
 For neural data evaluation, see scripts in `unsup_vvs/neural_fit` folder.
+For using pretrained checkpoints to generate responses on images, see README in `unsup_vvs/neural_fit` folder.

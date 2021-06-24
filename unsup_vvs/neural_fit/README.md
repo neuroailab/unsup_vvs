@@ -42,3 +42,12 @@ To get neural fitting results to V1, V4, and IT areas, you need to run `sh brain
 ## Auto-Encoder
 
 `set_func_name` should be `ae.res18_ae_s0`, `ae.res18_ae_s1`, `ae.res18_ae_s2`.
+
+# How to get responses from pretrained checkpoints
+
+Check function `test_sup_model` in script `generate_resps_from_ckpt.py`.
+The outputs will be stored in a dictionary, with keys like `encode_x` (x is from 1 to 9).
+Layer `encode_1` is the output of the first pooling layer and layer `encode_1.conv` is the output of the first conv layer.
+The other layers are outputs from the following residual blocks (ResNet18 has 8 residual blocks in total).
+The output is in shape `(batch_size, spatial_dim, spatial_dim, channels)`.
+Typical way of running this script is `python generate_resps_from_ckpt.py --gpu [gpu number] --set_func [set_func_name] --ckpt_path [downloaded ckpt path]`.

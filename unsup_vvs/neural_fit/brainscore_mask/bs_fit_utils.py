@@ -13,7 +13,7 @@ import numpy as np
 import json
 from collections import OrderedDict
 
-import unsup_vvs.network_training.cmd_parser
+import unsup_vvs.network_training.cmd_parser as cmd_parser
 
 # Color conversion code
 def rgb2xyz(rgb): # rgb from [0,1]
