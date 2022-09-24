@@ -187,10 +187,9 @@ def get_network_outputs(
         all_outs = prednet_builder.build_all_outs(images, _model_type)
     elif model_type == 'simclr_model':
         ending_points = get_simclr_ending_points(inputs)
-        all_outs = {
-                'encode_%i' % (_idx+1): _rep \
-                for _idx, _rep in enumerate(ending_points)
-                }
+        all_outs = OrderedDict()
+        for _idx, _rep in enumerate(ending_points):
+            all_outs['encode_%i' % (_idx+1)] = _rep
     elif model_type == 'simclr_model_mid':
         ending_points = get_simclr_ending_points(inputs)
         output = ending_points[-1]
