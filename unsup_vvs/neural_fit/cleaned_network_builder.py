@@ -82,7 +82,7 @@ def build_vm_model_from_args(args, post_input_image, module_name=['encode'], tra
     model_builder.reuse_dict = {}
     model_builder.init_model_block_class()
     model_builder.train = train
-    model_builder.all_out_dict = {}
+    model_builder.all_out_dict = OrderedDict()
     model_builder.outputs_dataset = OrderedDict()
     model_builder.save_layer_middle_output = True
 
@@ -184,7 +184,7 @@ def get_network_outputs(
                 images = tf.image.resize_images(
                         images, [new_shape, new_shape])
         import unsup_vvs.network_training.models.prednet_builder as prednet_builder
-        all_outs = prednet_builder.build_all_outs(images, _model_type)
+        all_outs = OrderedDict(prednet_builder.build_all_outs(images, _model_type))
     elif model_type == 'simclr_model':
         ending_points = get_simclr_ending_points(inputs)
         all_outs = OrderedDict()
